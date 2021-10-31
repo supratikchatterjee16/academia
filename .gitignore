@@ -1,3 +1,5 @@
 tcs_required/
 exams/
 books/
+**/*.egg-info
+**/__pycache__

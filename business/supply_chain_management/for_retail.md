@@ -90,7 +90,7 @@ Takes account of lead times.
 
 Inventory can be finished goods, Work-in-progress(WIP) goods and Raw Materials.
 
-1. Balance supply and demand, to mimize cost
+1. Balance supply and demand, to minimize cost
 2. Maintaining optimal inventory
 
 Methods used :
