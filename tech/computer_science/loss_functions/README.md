@@ -6,6 +6,16 @@ or the difference between actual to predicted values.
 This is however in a broad sense, as the loss functions are more often
 used to point at various different aspects.
 
+Loss functions are divided into L1 loss and L2 loss.
+
+L1 loss is given as :
+
+![L1 Loss function](images/l1-loss-function.png)
+
+L2 loss is given as :
+
+![L2 loss function](images/l2-loss-function.png)
+
 We see some common loss functions here.
 
 ## Loss functions for Regression
@@ -62,7 +72,7 @@ Where y<sub>i</sub> is the true value, ŷ<sub></sub>i is the predicted value an
 
 A comparison between L1 and L2 loss yields the following results:
 
-    L1 loss is more robust than its counterpart.
+    L1 loss is more robust than its L2 loss.
 
 On taking a closer look at the formulas, one can observe that if the difference between the predicted and the actual value is high, L2 loss magnifies the effect when compared to L1. Since L2 succumbs to outliers, L1 loss function is the more robust loss function.
 
