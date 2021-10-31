@@ -109,11 +109,11 @@ Loss functions penalize wrong predictions and does not do so for the right predi
 
 This margin is the maximum margin from the hyperplane to the data points, which is why hinge loss is preferred for SVMs. The following image clears the air on what a hyperplane and maximum margin is:
 
-![BCEL function](./svm.png)
+![SVM and hinge loss](./svm.png)
 
 The mathematical formulation of hinge loss is as follows:
 
-![SVM function](./svm.png)
+![Hinge loss](./hinge-loss.png)
 
 ### Kullback Leibler Divergence Loss(KL Loss)
 
