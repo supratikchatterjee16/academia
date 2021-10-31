@@ -17,7 +17,7 @@ The function is given as  :
 
 <!-- <img src="MAE.PNG" alt="MAE function" width="1pt" style="width:1pt"/> -->
 
-![MAE function](./MAE.png)
+![MAE function](images/MAE.png)
 
 This is useful when calculating allocations, in the form of
 Quantity Disagreement and Allocation Disagreement.
@@ -31,7 +31,7 @@ Mean Squared Error (also called L2 loss) is almost every data scientist’s pref
 
 Mean Squared Error is the average of the squared differences between the actual and the predicted values. For a data point Y<sub>i</sub> and its predicted value Ŷ<sub>i</sub>, where n is the total number of data points in the dataset, the mean squared error is defined as:
 
-![MSE function](./MSE.png)
+![MSE function](images/MSE.png)
 
 In regression however, n turns into 2 * 'm'.
 
@@ -45,7 +45,7 @@ Mean Bias Error takes the actual difference between the target and the predicted
 
 The formula of Mean Bias Error is:
 
-![MBE function](./MBE.png)
+![MBE function](images/MBE.png)
 
 
 ### Mean Squared Logarithmic Error(MSLE)
@@ -54,7 +54,7 @@ Sometimes, one may not want to penalize the model too much for predicting unscal
 
 Calculating the Mean Squared Logarithmic Error is the same as Mean Squared Error, except the natural logarithm of the predicted values is used rather than the actual values.
 
-![MSLE function](./MSLE.png)
+![MSLE function](images/MSLE.png)
 
 Where y<sub>i</sub> is the true value, ŷ<sub></sub>i is the predicted value and ‘n’ is the total number of data points in the dataset.
 
@@ -77,7 +77,7 @@ Huber Loss combines the robustness of L1 with the stability of L2, essentially t
 Huber Loss is characterized by the parameter delta (𝛿). For a prediction f(x) of the data point y, with the characterizing parameter 𝛿, Huber Loss is formulated as:
 
 
-![Huber Loss function](./huber-loss.PNG)
+![Huber Loss function](images/huber-loss.PNG)
 
 ## Loss functions for Classification
 
@@ -89,7 +89,7 @@ Entropy is the measure of randomness in the information being processed, and cro
 
 If the divergence of the predicted probability from the actual label increases, the cross-entropy loss increases. Going by this, predicting a probability of .011 when the actual observation label is 1 would result in a high loss value. In an ideal situation, a “perfect” model would have a log loss of 0. Looking at the loss function would make things even clearer :
 
-![BCEL function](./BCEL.png)
+![BCEL function](images/BCEL.png)
 
 Where yi is the true label and hθ(xi) is the predicted value post hypothesis.
 
@@ -109,11 +109,11 @@ Loss functions penalize wrong predictions and does not do so for the right predi
 
 This margin is the maximum margin from the hyperplane to the data points, which is why hinge loss is preferred for SVMs. The following image clears the air on what a hyperplane and maximum margin is:
 
-![SVM and hinge loss](./svm.png)
+![SVM and hinge loss](images/svm.png)
 
 The mathematical formulation of hinge loss is as follows:
 
-![Hinge loss](./hinge-loss.png)
+![Hinge loss](images/hinge-loss.png)
 
 ### Kullback Leibler Divergence Loss(KL Loss)
 
@@ -121,4 +121,4 @@ Kullback Leibler Divergence Loss is a measure of how a distribution varies from 
 
 The number of information lost in the predicted distribution is used as a measure. The KL Divergence of a distribution P(x) from Q(x) is given by:
 
-![KLDL function](./kl-divergence-loss.PNG)
+![KLDL function](images/kl-divergence-loss.PNG)
