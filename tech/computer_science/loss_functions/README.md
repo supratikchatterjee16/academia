@@ -121,4 +121,4 @@ Kullback Leibler Divergence Loss is a measure of how a distribution varies from 
 
 The number of information lost in the predicted distribution is used as a measure. The KL Divergence of a distribution P(x) from Q(x) is given by:
 
-![KLDL function](./kl-divergence-loss.png)
+![KLDL function](./kl-divergence-loss.PNG)
