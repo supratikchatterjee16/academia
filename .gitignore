@@ -3,3 +3,4 @@ exams/
 books/
 **/*.egg-info
 **/__pycache__
+research_for_higher_ed/
