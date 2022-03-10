@@ -1,0 +1,31 @@
+Company,Ticker,Exchange,Sector,Date added,Weighting
+3M,MMM,NYSE,Industrials,09/08/1976,3.022
+American Express,AXP,NYSE,Financials,30/08/1982,3.602
+Amgen,AMGN,NASDAQ,Health Care,31/08/2020,4.482
+Apple,AAPL,NASDAQ,Information Technology,19/03/2015,3.252
+Boeing,BA,NYSE,Industrials,12/03/1987,3.962
+Caterpillar,CAT,NYSE,Industrials,06/05/1991,3.742
+Chevron,CVX,NYSE,Energy,19/02/2008,2.531
+Cisco,CSCO,NASDAQ,Information Technology,08/06/2009,1.031
+Coca-Cola,KO,NYSE,Consumer Staples,12/03/1987,1.151
+Disney,DIS,NYSE,Communication Services,06/05/1991,2.651
+Dow,DOW,NYSE,Materials,02/04/2019,1.131
+Goldman Sachs,GS,NYSE,Financials,20/09/2013,6.883
+Home Depot,HD,NYSE,Consumer Discretionary,01/11/1999,6.713
+Honeywell,HON,NASDAQ,Industrials,31/08/2020,3.612
+IBM,IBM,NYSE,Information Technology,29/06/1979,2.551
+Intel,INTC,NASDAQ,Information Technology,01/11/1999,0.910
+Johnson & Johnson,JNJ,NYSE,Health Care,17/03/1997,3.192
+JPMorgan Chase,JPM,NYSE,Financials,06/05/1991,2.901
+McDonald's,MCD,NYSE,Consumer Discretionary,30/10/1985,4.832
+Merck,MRK,NYSE,Health Care,29/06/1979,1.431
+Microsoft,MSFT,NASDAQ,Information Technology,01/11/1999,5.663
+Nike,NKE,NYSE,Consumer Discretionary,20/09/2013,2.671
+Procter & Gamble,PG,NYSE,Consumer Staples,26/05/1932,2.971
+Salesforce,CRM,NYSE,Information Technology,31/08/2020,4.042
+Travelers,TRV,NYSE,Financials,08/06/2009,3.202
+UnitedHealth,UNH,NYSE,Health Care,24/09/2012,9.175
+Verizon,VZ,NYSE,Communication Services,08/04/2004,0.980
+Visa,V,NYSE,Financials,20/09/2013,4.232
+Walgreens Boots Alliance,WBA,NASDAQ,Health Care,26/06/2018,0.920
+Walmart,WMT,NYSE,Consumer Staples,17/03/1997,2.561
