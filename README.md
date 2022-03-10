@@ -4,6 +4,8 @@ These are shared notes for easy access, when required to refer to for some very 
 
 Why this is being made, is to make sure that the structure and the list of tools that we are made aware of in the courses, are there listed, so that we know where to look for the information, when we need it, wherever we need it.
 
+Additionally, there is another project for which this happens to work as an incredibly verbose dataset of well formulated sentences, as well as a dictionary of uncommon-common knowledge, or specialized common knowledge if you will.
+
 It is more oriented towards revising for application later on, and for continual improvement based on practice of certain things.
 
 The learnings are divided into 3 parts :
