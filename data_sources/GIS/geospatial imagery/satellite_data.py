@@ -1,3 +1,4 @@
+import multiprocessing
 import os
 import sys
 import time
@@ -88,9 +89,15 @@ class ApiManager:
         else:
             logger.warn()
 
+    def run(self, api_name: str):
+        pass
+
 
 if __name__ == '__main__':
     api_man = ApiManager('test-manager')
     api = RestApi(name='spectator-free',
-                  api_url='api.spectator.earth', api_method="GET", )
-    api.create_new()
+                  api_url='api.spectator.earth',
+                  api_method="GET",
+                  )
+    api_man.add('spectator', api)
+    api_man.run('spectator')
