@@ -28,6 +28,9 @@ GPS for macro positioning :
 
 1. Camera(OV7670)
  
+### RADAR
+
+NXP TEF810X
  
 ## Communication
 
@@ -67,6 +70,7 @@ Good for wheel drive control, flight control and any other aspect requiring fine
 3. PIC32MZ(Clock : 200MHz)
 
 Arduino Yún exists with Atmega32U4 and Atheros AR9331(micro processor 400 MHz running Linino)
+STM32F4 has something called a **DFU** bootloader.
 
 ### Microprocessor
 
