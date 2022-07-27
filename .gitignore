@@ -1,4 +1,20 @@
-*
+books/
+data_sources/
+exams/
+tcs_required/
+research_for_higher_ed/
+research/
+humanities/
+
+*udacity*
+*coursera*
+*oracle*
+tech/ai/narrow/machine_learning/deep_learning/nn/neural_net_example_files
+
+*.pdf
+*.csv
+*.h5
+
 !*.ipynb
 !*.gitignore
 !*.png
@@ -7,4 +23,3 @@
 !*.jpg
 !*.jpeg
 !*.md
-!*/
