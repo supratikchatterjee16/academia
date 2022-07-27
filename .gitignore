@@ -1,4 +1,9 @@
 *
 !*.gitignore
+!*.png
+!*.PNG
+!*.webp
+!*.jpg
+!*.jpeg
 !*.md
 !*/
