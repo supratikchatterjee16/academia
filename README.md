@@ -13,12 +13,13 @@ The learnings are divided into 3 parts :
 1. Business
 2. Process
 3. Technology
+4. Leadership
 
 The hierarchy of the matter will be continuously updated here, in order to accurately track the list of learning.
 
 The same hierarchy could be made use of in order to mark which is being worked upon by who currently.
 
-## Full tree
+<!--## Full tree
 
 ### Business
 
@@ -60,4 +61,4 @@ Wherever an issue is spotted, feel free to correct. Feel free to add onto the co
 Please update this README when adding a new branch.
 
 Elementary matter(101 course material) will be updated as README, at each subject/topic root.
-It will have examples, deep problems, exercise materials and everything in between, to manage knowledge as best as possible.
+It will have examples, deep problems, exercise materials and everything in between, to manage knowledge as best as possible.-->
