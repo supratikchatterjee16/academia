@@ -8,7 +8,7 @@ Additionally, there is another project for which this happens to work as an incr
 
 It is more oriented towards revising for application later on, and for continual improvement based on practice of certain things.
 
-The learnings are divided into 3 parts :
+The learnings are divided into 4 parts :
 
 1. Business
 2. Process
