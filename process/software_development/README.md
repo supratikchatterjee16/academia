@@ -26,28 +26,28 @@
 
 # Methodologies and frameworks
 
-* ASD
-* DevOps
-* DAD
-* DSDM
-* FDD
-* IID
-* Kanban
-* Lean
-* SD
-* LeSS
-* MDD
-* MSF
-* PSP
-* RAD
+* ASD : Agile Software Development
+* DevOps : Development and Operations
+* DAD : Disciplined Agile Delivery
+* DSDM : Dynamic Systems Development Method
+* FDD :Feature Driven Development
+* IID : Iterative and Incremental Development
+* Kanban : 
+* Lean : 
+* SD : 
+* LeSS : Large Scale Scrum
+* MDD : Model driven development
+* MSF : 
+* PSP : Personal Software Process
+* RAD : 
 * RUP
-* SAFe
-* Scrum
+* SAFe : Scaled Agile Framework
+* Scrum 
 * SEMAT
-* TSP
+* TSP 
 * OpenUP
-* UP
-* XP
+* UP : Unified Programming(All segments of a business. It is iterative, incremental, architecture-centric and risk-focused)
+* XP : Extreme Programming
 
 
 # Supporting disciplines
