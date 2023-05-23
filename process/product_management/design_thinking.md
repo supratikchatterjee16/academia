@@ -3,6 +3,7 @@
 It is a process that allows a group of individuals to harness the concept around a project in order for it to be realized.
 
 The steps involved in this process are :
+
 1. Gather user input
 2. Assemble notes
 3. Identify Pain Points
@@ -14,3 +15,12 @@ The steps involved in this process are :
 9. Scenarios
 10. Usability
 11. Story Maps
+
+The process of design thinking goes in a loop with the following steps : 
+
+1. Empathize
+2. Define
+3. Ideate
+4. Prototype
+5. Test
+
