@@ -3,7 +3,7 @@
 | What they... | Before | After |
 | --- | --- | --- |
 | Know | Presentations are tedious | 3 aspects of a good Presentation, Don't try to inform. Use roadmap |
-| Believe | Presentations = Informaition | The roadmap works...every single time |
+| Believe | Presentations = Information | The roadmap works...every single time |
 | Feel | Bored / Zoned Out / Resigned | Curious, motivated, passionate... |
 | Do | One size fits all | Aims at making you use transformational presentation, use a roadmap |
 
