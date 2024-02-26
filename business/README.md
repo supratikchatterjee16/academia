@@ -29,3 +29,16 @@ The components involved in a business can be broadly categorized into several ke
 12. **Risk Management:** Identifying and managing potential risks that could impact the business, including economic, operational, and competitive risks.
 
 Understanding and effectively managing these components are crucial for the success and sustainability of a business. The specific details and importance of each component can vary depending on the type and size of the business, as well as the industry in which it operates.
+
+
+## Functions
+
+There are 7 functions in any business which are :
+
+1. Sales
+2. Marketing
+3. Leadership
+4. Finance and Accounting
+5. HR and People Management
+6. R&D
+7. Operations
