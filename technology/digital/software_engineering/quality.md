@@ -115,3 +115,114 @@ Phases of GQM Method :
     In this phase, collection of actual data takes place.
     Interpretation:
     It is the final phase in which answers to the questions asked in previous phases are provided and the goal’s achievement is verified.
+
+## Code Optimization
+
+Categorized into : 
+
+1. Platform Independent
+    - using loop rolling
+    - reducing function calls 
+    - using memory efficient routines
+    - reducing the number of conditions
+2. Patform Dependent
+    - Instructional level parallelism
+    - Data level parallelism
+    - Cache Optimization techniques
+
+Compiler based optimization. Good compilers do the following : 
+
+1. Data Alignment
+2. Proper Loop Nesting
+3. Procedure Inlining
+4. Loop Unrolling
+5. Loop Blocking(Tiling)
+6. Local Optimization
+
+**Note** : Loop Unrolling is bringing out looping statements to prevent conditional checks if unrequired.
+
+Trade off : Caching data can increase performance, but it increases the memory consumption.
+
+Fixing bottlenecks can be achieved by leveraging the Pareto Priciple and the 90/10 rule.
+
+Pareto Principle : 80% of issues, problems or effects are produced by 20% of causes or defects.  
+90/10 law : 90% of execution time is taken for executing 10% of the code.
+
+## Software Quality Tools
+
+There are 4 categories :
+
+1. Software Quality Tools for developers
+2. Software Quality tools for general overview
+3. Static Program Assessment Tool
+4. Dynamic Program Analysis Tools
+
+They cover 7 categories of code quality :
+
+1. Duplicated Codes
+2. Coding Standards
+3. Unit Tests
+4. Complex Code
+5. potantial Bugs
+6. Comments
+7. Design and Architecture
+
+Some tools in the market :
+
+### SAP Code quality tools
+
+1. Accenture Code Review Tool for SAP
+2. Quality Inspector for SAP
+3. Accenture Security  Workbench for SAP
+
+### Java Code Quality Tools
+
+1. Sonar
+2. checkstyle
+3. PMD
+4. FindBugs
+5. JDepend
+6. Architecture Rules
+
+### Microsoft .NET Quality Tools
+
+1. MS Visual Studio - Static Code Analysis
+
+### Oracle PL/SQL quality tools
+
+1. PL/SQL Code review tool(Accenture Oracle e-Business suite automation)
+2. Sonar
+3. Toad CodeXPert
+
+### Mainframe COBOL quality tools
+
+1. Standalone development environment
+2. Downsizing Development Environment
+3. IBM Rational Asset Analyzer
+
+## Review Process
+
+1. Plan for a review
+2. Prepare for a review 
+3. Conduct a review
+4. Resolve review points
+5. Validate resolutions
+6. Baseline a software work product
+
+## Testing Metrics
+
+1. Defect Desity : $$Number of confirmed defects(in a specific testing phase) / Size of component(in terms of man-days, functional points or LOC)$$
+2. Defect Injection rate : $$Number of injected defects in a specific amount of time.$$
+3. Defect removal efficiency : $$Number of defects found in internal tests * 100 / Total number of defect$$
+
+## Code Quality Metrics
+
+The following are required coding quality measures :
+
+1. Duplicated Code Identification
+2. Coding Standards
+3. Automated Test Units
+4. Complexity
+5. Comments
+6. Design and Architecture
+
