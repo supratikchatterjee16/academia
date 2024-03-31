@@ -41,3 +41,31 @@ Version Control Tools :
 4. TFS
 5. Perforce
 
+Containerization tools :
+
+1. LXC(Linux Containers)
+2. OpenVZ
+3. FreeBSD Jail
+4. AIX Workload Partition
+5. Solaris Container
+
+Docker use cases :
+
+1. Configuration Management is simplified
+2. Code pipeline management
+3. App Isolation
+4. Debugging
+5. Rapid Deployment
+6. Multi-tenancy
+7. Server consolidation
+8. Developer Productivity
+
+AWS offerings for AWS :
+
+1. Amazon ECS
+2. AWS Fargate
+3. Amazon EKS
+4. Amazon ECR
+
+Accenture also has Accenture DevOps Platform(ADOP).
+

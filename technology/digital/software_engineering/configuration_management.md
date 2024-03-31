@@ -15,7 +15,7 @@ Members :
     - Categorization of CM
     - Levels of control
     - Configuration Items
-    - Namin Conventions
+    - Naming Conventions
     - Selection of Configuration Items
 2. Baselining and Managing the library
 3. Controllin Change
