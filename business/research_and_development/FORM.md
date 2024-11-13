@@ -124,3 +124,4 @@ Frameworks to use are the 5 Whys, Affinity Clustering and a Journey Map.
 
 ### think and act sustainably
 
+One way of doing these are to have a How Might 
