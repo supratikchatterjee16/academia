@@ -44,7 +44,7 @@ This has allowed for the following metrics :
     - Lean Business Operations
     - Strategy Agility
 4. Continuous Learning Culture
-    - LEarning Organization
+    - Learning Organization
     - Innovation Culture
     - relentless improvement
 5. Lean-Agile Leadership
