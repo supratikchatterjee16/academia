@@ -13,7 +13,7 @@ There are 2 classification systems relevant:
 
 ## ISCED-F 2013
 
-ISCED organizes the fields hierarchically into:
+[ISCED](https://uis.unesco.org/en/topic/international-standard-classification-education-isced) organizes the fields hierarchically into:
 
 1. Broad fields(Represented by 2 digits)
 2. Narrow fields(Represented by 3 digits)
@@ -41,7 +41,7 @@ The fields can be classified in different ways, but adherence to a standardizati
 
 ## NAICS
 
-NAICS uses a 6 digit hierarchcal code structure, to divide industrial sectors:
+[NAICS](https://www.census.gov/naics/) uses a 6 digit hierarchcal code structure, to divide industrial sectors:
 
 | Digit(s) | Meaning                                            |
 | -------- | -------------------------------------------------- |
@@ -110,7 +110,7 @@ A list of the NAICS broad sectors are:
 
 ## Organization of information here
 
-Our focus here, under technology will be primarily the ISCED codes **05, 06, 07, & 08**, these will be mapped into the NAICS codes as required, some of the constructs of 05(Natural Sciences, Mathematics, and Statistics), will when relevant be attached to the business and other technology sections, as the field's parlance.
+Our focus here, under technology will be primarily the ISCED codes **05, 06, 07, & 08**, these will be mapped into the NAICS codes as required, under the "industries" section, some of the constructs of 05(Natural Sciences, Mathematics, and Statistics), will, when relevant be attached to the business and other technology sections, as the field's parlance.
 
 <!-- 
 ## Classification of technology
