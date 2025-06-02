@@ -1,23 +1,50 @@
-# Academics
+# Academia
 
-These are shared notes for easy access, when required to refer to for some very targeted applications.
+Shared notes for easy access, for reference, when dispensing a contextually required responsibility, and when working with industries at various stages of their development.
 
-Why this is being made, is to make sure that the structure and the list of tools that we are made aware of in the courses, are there listed, so that we know where to look for the information, when we need it, wherever we need it.
+This contains reference materials for topics studied as well as practice, and proof of concepts of certain topics, to serve as a quick guide for implementations.
 
-Additionally, there is another project for which this happens to work as an incredibly verbose dataset of well formulated sentences, as well as a dictionary of uncommon-common knowledge, or specialized common knowledge if you will.
 
-It is more oriented towards revising for application later on, and for continual improvement based on practice of certain things.
-
-The learnings are divided into 4 parts :
+This is focused on industries and was originally divided into 4 parts :
 
 1. Business
 2. Process
 3. Technology
 4. Leadership
 
-The hierarchy of the matter will be continuously updated here, in order to accurately track the list of learning.
+However, on further study, this was found to be a bit of an issue, in using process and leadership as individual topics, without introducing business contexts to them. Hence, as a result, the structure evolved in the following way:
 
-The same hierarchy could be made use of in order to mark which is being worked upon by who currently.
+- [Business](/business/README.md)
+	- [Capabilities](/business/capability/README.md)
+	- [Finance](/business/finance/README.md)
+		- [Taxes](/business/finance/taxes/README.md)
+	- [Leadership](/business/leadership/README.md)
+	- [Industries](/business/industries/README.md)
+	- [Operations](/business/operations/README.md)
+	- [Sales](/business/sales/README.md)
+	- [Marketing](/business/marketing/README.md)
+	- [Research and Development](/business/research_and_development/README.md)
+- [Technology](/technology/README.md)(to be structured better)
+	- [Digital](/technology/digital/README.md)
+	- [Statistics](/technology/statistics/README.md)
+	- [Radio](/technology/radio/README.md)
+
+
+
+<!-- 
+Structure
+
+Originally, the structure was divided into the following:
+
+- Business
+- Process
+- Technology
+
+This was due to the understanding that those 3 can be observed as 3 separate topics, critical for understanding the entire business ecosystem.
+However, on further study and work into the subject matter, it is glaringly apparent, that a vast majority of the processes are based on business contexts.
+
+This means, that even though a process can be observed separately
+-->
 
 <!--## Full tree
 
@@ -30,7 +57,7 @@ The same hierarchy could be made use of in order to mark which is being worked u
 5. Retail
 6. Supply Chain Management
 
-### Process
+### Process - This is migrated to 
 
 1. Continuous Business Process Improvement
 	1. LEAN
