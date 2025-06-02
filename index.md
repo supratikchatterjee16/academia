@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /academia/README.md
+      link: /README.md
 
 features:
   - title: Structured Industry relevant notes
