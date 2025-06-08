@@ -9,7 +9,7 @@ The rapid advancements in technology have played a crucial role in shaping the m
 There are 2 classification systems relevant:
 
 - North American Classification System(NAICS) - classifies industries
-- International Stadard Classification of Education(ISCED) - classifies fields of education or training
+- International Standard Classification of Education(ISCED) - classifies fields of education or training
 
 ## ISCED-F 2013
 
@@ -111,35 +111,3 @@ A list of the NAICS broad sectors are:
 ## Organization of information here
 
 Our focus here, under technology will be primarily the ISCED codes **05, 06, 07, & 08**, these will be mapped into the NAICS codes as required, under the "industries" section, some of the constructs of 05(Natural Sciences, Mathematics, and Statistics), will, when relevant be attached to the business and other technology sections, as the field's parlance.
-
-<!-- 
-## Classification of technology
-
-1. Information Technology
-2. Consumer Electronics
-3. Industrial Technology
-4. Biotechnology
-5. Clean Energy Technology
-6. Healthcare Technology
-7. Transportation Technology
-8. Communication Technology
-9. Environmental Technology
-10. Emerging Technology
-
-## Classifications based on digitization
-
-Technology can be broadly classified into digital and non-digital categories based on the nature of the underlying processes and information representation.
-
-1. **Digital Technology:**
-   - **Binary Representation:** Digital technology operates using binary code, represented by combinations of 0s and 1s.
-   - **Processing of Digital Signals:** Digital systems process information using discrete values and precise mathematical calculations.
-   - **Examples:** Computers, smartphones, digital cameras, digital audio players, digital watches, and digital televisions.
-
-2. **Non-Digital (Analog) Technology:**
-   - **Continuous Representation:** Analog technology operates using continuous signals and values within a range.
-   - **Processing of Analog Signals:** Analog systems process information using continuously varying physical quantities such as voltage or electrical currents.
-   - **Examples:** Analog watches, analog audio recording devices (e.g., cassette tapes, vinyl records), analog thermometers, and analog television (though digital TV has largely replaced analog TV in many regions).
-
-It's worth noting that there can be instances where both digital and analog components are used together, and the distinction between them is not always absolute. For example, hybrid systems may use digital components for processing and communication while interacting with analog sensors or devices.
-
-In recent times, there has been a significant shift towards digital technology due to its advantages in terms of precision, reliability, and the ability to process and transmit data more efficiently. Many traditional analog technologies have been replaced or complemented by their digital counterparts as technology continues to evolve. -->

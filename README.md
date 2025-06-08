@@ -30,62 +30,10 @@ However, on further study, this was found to be a bit of an issue, in using proc
 	- [Radio](/technology/radio/README.md)
 
 
+On further analysis, there were some topics found that do not align to just businesses and technology, but both use them in various ways, i.e. are vastly interdisciplinary. These interdisciplinary topics will be focused on separately.
 
-<!-- 
-Structure
+The topics currently are:
 
-Originally, the structure was divided into the following:
-
-- Business
-- Process
-- Technology
-
-This was due to the understanding that those 3 can be observed as 3 separate topics, critical for understanding the entire business ecosystem.
-However, on further study and work into the subject matter, it is glaringly apparent, that a vast majority of the processes are based on business contexts.
-
-This means, that even though a process can be observed separately
--->
-
-<!--## Full tree
-
-### Business
-
-1. Banking
-2. Biostatistics
-3. Business Analystics
-4. Marketing
-5. Retail
-6. Supply Chain Management
-
-### Process - This is migrated to 
-
-1. Continuous Business Process Improvement
-	1. LEAN
-	2. Six Sigma
-2. Operational Excellence
-3. Software Estimations
-
-### Technology
-
-1. AI
-	1. Narrow AI
-		1. Computer Vision
-		2. Machine Learning
-			1. Deep Learning
-		3. NLP
-2. Databases
-	1. PostgreSQL
-	2. MongoDB
-3. Programming Languages
-	1. CUDA
-4. Statistics
-	1. Data Visualizations
-	2. Statistical Modelling
-
-Each element is going to have some inter-connectivity. This is going to be maintained on GitHub, through cross references to the files.
-Wherever an issue is spotted, feel free to correct. Feel free to add onto the content.
-
-Please update this README when adding a new branch.
-
-Elementary matter(101 course material) will be updated as README, at each subject/topic root.
-It will have examples, deep problems, exercise materials and everything in between, to manage knowledge as best as possible.-->
+- [Sustainability](./sustainability/index.md)
+- [Decision Sciences](./decision_science/index.md)
+- [Systems Theory](./systems/index.md)
