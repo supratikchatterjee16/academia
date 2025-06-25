@@ -5,8 +5,8 @@ In maths and computer science, algorithm is a finite sequence of mathematically 
 In Computer Science, algorithms can be classified by implementation, design paradigm, and optimization:
 
 1. Implementation
-	- recursion - invoke itself recursively. (Ex: Tower of Hanoi)
-	- Serial, parallel, or distributed
+	- [recursion](./recursion.md) - invoke itself recursively. (Ex: Tower of Hanoi)
+	- [Serial](./serial.md), [parallel](./parallel.md), or [distributed](./distributed.md)
 	- Deterministic or non-deterministic - solve a problem with exact decision
 	- Exact or approximate - Approximation algorithms seek an approximation that is close to the the solution
 	- Quantum Algorithm - Algorithms run on a realistic model of quantum computation
@@ -22,6 +22,3 @@ In Computer Science, algorithms can be classified by implementation, design para
 	- Dynamic Programming - When a problem shows optimal substructures—meaning the optimal solution can be constructed from optimal solutions to subproblems—and overlapping subproblems, meaning the same subproblems are used to solve many different problem instances, a quicker approach called dynamic programming avoids recomputing solutions. 
 	- Greedy method - Greedy algorithms, similarly to a dynamic programming, work by examining substructures, in this case not of the problem but of a given solution.
 	- Heuristic method - In optimization problems, heuristic algorithms find solutions close to the optimal solution when finding the optimal solution is impractical.
-
-
-	
