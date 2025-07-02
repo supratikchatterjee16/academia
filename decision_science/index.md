@@ -21,8 +21,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 | **Unstructured Decisions**    | Complex, novel, no clear procedure; high uncertainty              | Entering a new market, product innovation |
 | **Semi-Structured Decisions** | Combination of both; partial rules but also human judgment needed | Loan approvals, hiring decisions          |
 
----
-
 ### 2. **By Scope**
 
 | **Type**                  | **Description**                                          | **Examples**                             |
@@ -30,8 +28,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 | **Strategic Decisions**   | Long-term, high-impact, often unstructured               | Mergers, business model selection        |
 | **Tactical Decisions**    | Medium-term, implement strategic goals                   | Marketing campaigns, resource allocation |
 | **Operational Decisions** | Day-to-day, often structured, support tactical decisions | Inventory restocking, scheduling         |
-
----
 
 ### 3. **By Method of Analysis**
 
@@ -41,8 +37,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 | **Normative Decisions**    | Ideal decisions based on logic, probability, and utility theory | Maximizing expected return             |
 | **Prescriptive Decisions** | Provide actionable recommendations based on models              | Portfolio optimization, route planning |
 
----
-
 ### 4. **By Environment**
 
 | **Type**                        | **Description**                                            | **Examples**                                  |
@@ -50,8 +44,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 | **Decisions under Certainty**   | All outcomes and probabilities are known                   | Choosing the cheaper of two known prices      |
 | **Decisions under Risk**        | Probabilities of outcomes are known                        | Investing in stock with known volatility      |
 | **Decisions under Uncertainty** | Outcomes and probabilities are unknown or hard to estimate | Entering a new market without historical data |
-
----
 
 ### 5. **By Participants**
 
@@ -63,8 +55,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 
 
 ## Structured Study Plan for Decision Sciences
-
----
 
 ### **1. Foundations of Decision Sciences**
 
@@ -79,8 +69,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 * **“An Introduction to Management Science”** by Anderson, Sweeney, Williams (for OR + decision making)
 * **“The Decision Book”** by Mikael Krogerus & Roman Tschäppeler (simple models)
 * ISO/IEC 13273-1: Vocabulary on Decision-making Concepts (optional)
-
----
 
 ### **2. Decision Theory & Models**
 
@@ -98,8 +86,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 * **“Decision Analysis for Management Judgment”** by Goodwin & Wright
 * **“Thinking, Fast and Slow”** by Daniel Kahneman *(for behavioral insights)*
 
----
-
 ### **3. Mathematical & Statistical Tools**
 
 #### Key Topics:
@@ -116,8 +102,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 * **“Operations Research: Applications and Algorithms”** by Winston
 * **“Simulation Modeling and Analysis”** by Averill M. Law
 
----
-
 ### **4. Optimization & Operations Research**
 
 #### Key Topics:
@@ -132,8 +116,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 * **“Introduction to Operations Research”** by Hillier & Lieberman
 * **“Convex Optimization”** by Boyd & Vandenberghe *(more advanced)*
 * **INFORMS resources** and journals (e.g., Interfaces, Management Science)
-
----
 
 ### **5. Behavioral Decision Science**
 
@@ -151,8 +133,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 * **“Thinking, Fast and Slow”** by Kahneman (again—core material here)
 * **“Nudge”** by Thaler & Sunstein
 
----
-
 ### **6. Data-Driven Decision Making**
 
 #### Key Topics:
@@ -168,8 +148,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 * **“Business Intelligence: A Managerial Perspective on Analytics”** by Sharda, Delen, Turban
 * **“Competing on Analytics”** by Thomas H. Davenport
 * **“Python for Data Analysis”** by Wes McKinney *(for practical data work)*
-
----
 
 ### **7. Simulation and Systems Thinking**
 
@@ -187,8 +165,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 * **“Business Dynamics: Systems Thinking and Modeling”** by John D. Sterman
 * **“Simulation with Arena”** by Kelton, Sadowski, and Zupick
 
----
-
 ### **8. Advanced & Specialized Topics (Optional)**
 
 * Multi-Criteria Decision Analysis (MCDA)
@@ -203,8 +179,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 * **“Reinforcement Learning: An Introduction”** by Sutton & Barto *(AI decision-making)*
 * **“Behavioral Game Theory”** by Colin Camerer
 
----
-
 ## Tools and Platforms to Learn
 
 | **Tool**                             | **Purpose**                        |
@@ -216,8 +190,6 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 | Power BI / Tableau                   | Data visualization for decisions   |
 | AnyLogic / Arena                     | Simulation modeling                |
 
----
-
 ## Suggested Study Timeline (Approximate)
 
 | **Phase**                     | **Duration** | **Focus**                                |
@@ -228,5 +200,3 @@ Decision Sciences is the study of quantitative and qualitative techniques used t
 | Phase 4: Tools & Data         | 4–6 weeks    | Python, data analytics, DSS              |
 | Phase 5: Behavioral & Systems | 4–5 weeks    | Human decision factors, systems thinking |
 | Phase 6: Capstone / Project   | 2–4 weeks    | Solve a real decision problem end-to-end |
-
----
