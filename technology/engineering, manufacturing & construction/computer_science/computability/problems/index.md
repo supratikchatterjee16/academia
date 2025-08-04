@@ -1,4 +1,13 @@
 # Problems - Computation
+ 
+A problem is a well-defined question that we want an algorithm to solve.
+
+It consists of:
+
+- Input: Some data or value(s)
+- Output: A required answer based on the input
+
+A problem is solved if there exists an algorithm that produces the correct output for every valid input.
 
 In theoretical computer science and computational complexity theory, **problems are categorized** based on how difficult they are to solve or verify, using formal models like Turing machines. There’s no fixed number of categories, but here’s a structured list of the **most widely recognized problem classes**, from basic to advanced:
 

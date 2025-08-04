@@ -14,6 +14,8 @@ The Theory of Computation is the study of the mathematical foundations of comput
 | **Computability Theory** | What problems are solvable by any algorithm | Turing machines, halting problem, decidability |
 | **Complexity Theory**    | Resources needed to solve problems          | Time/space complexity, P vs NP, reductions     |
 
+**To understand the fundamentals, it is important to understand ["Problems"](./problems/index.md) first and foremost.**
+
 ## Computability Theory
 
 **Computability Theory** is a branch of theoretical computer science and mathematical logic that studies:
