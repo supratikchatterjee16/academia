@@ -1,5 +1,19 @@
 # Theory of Computation
 
+The Theory of Computation is the study of the mathematical foundations of computing. It asks three core questions:
+
+1. What can computers compute? → Computability Theory
+2. How efficiently can they compute it? → Complexity Theory
+3. How do formal machines process input? → Automata Theory
+
+## Breakdown
+
+| Branch                   | Focus                                       | Key Concepts                                   |
+| ------------------------ | ------------------------------------------- | ---------------------------------------------- |
+| **Automata Theory**      | Abstract machines & language recognition    | Finite automata, regular languages, grammars   |
+| **Computability Theory** | What problems are solvable by any algorithm | Turing machines, halting problem, decidability |
+| **Complexity Theory**    | Resources needed to solve problems          | Time/space complexity, P vs NP, reductions     |
+
 ## Computability Theory
 
 **Computability Theory** is a branch of theoretical computer science and mathematical logic that studies:
