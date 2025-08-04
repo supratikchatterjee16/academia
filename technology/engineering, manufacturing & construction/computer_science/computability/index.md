@@ -159,6 +159,18 @@ These are groups of problems based on how hard they are to solve.
 | **EXP**         | Problems solvable in exponential time                             |
 | **BPP / BQP**   | Problems solvable by probabilistic or quantum algorithms          |
 
+Some examples for each of the classes of problems above are:
+
+| Class           | Meaning                       | Example                |
+| --------------- | ----------------------------- | ---------------------- |
+| **P**           | Solvable in polynomial time   | Sorting, Primality     |
+| **NP**          | Verifiable in polynomial time | Subset Sum, Sudoku     |
+| **NP-Complete** | Hardest problems in NP        | SAT, 3-SAT, TSP        |
+| **PSPACE**      | Polynomial memory             | QBF, Generalized Games |
+| **EXP**         | Exponential time              | Generalized Chess      |
+| **BPP**         | Randomized poly-time          | Miller-Rabin Test      |
+| **BQP**         | Quantum poly-time             | Shor’s Algorithm       |
+
 ---
 
 #### 2. **Time Complexity**
