@@ -48,6 +48,17 @@ In **Information Technology (IT)**, **networks** are defined as:
 
 ---
 
+## Planes(Systems/Networks)
+
+1. Data Plane: Carries the actual user/application traffic
+2. Control Plane: Decides how data flows
+3. Signalling Plane: Establishes, modifies, and tears down communication sessions
+4. Management Plane: Provides configuration, monitoring, and administration of the system
+5. Application Plane: Defines the actual end-user logic and business semantics.
+6. Security Plane: Enforces security policies across data/control/management planes
+
+---
+
 ## Organizing topics
 
 The topics will be arranged in terms of the [OSI Model](./osi_model.md).
