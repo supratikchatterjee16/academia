@@ -234,6 +234,125 @@ To avoid boxing/unboxing overhead:
 - IntSupplier, LongSupplier, DoubleSupplier
 - IntUnaryOperator, IntBinaryOperator (and for Long/Double)
 
+### Streams API
+
+The Java Streams API, utilizes functional programming heavily.
+
+Here’s a structured guide you can use as a reference:
+
+### 1. Creating Streams
+
+| Source                                      | How to Get Stream                                                           | Notes                                                       |
+| ------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| `Collection` (`List`, `Set`, `Queue`, etc.) | `collection.stream()` or `collection.parallelStream()`                      | All **collections** support `.stream()` (since Java 8).     |
+| `Map<K,V>`                                  | `map.entrySet().stream()`, `map.keySet().stream()`, `map.values().stream()` | `Map` itself has no `.stream()`, but its views do.          |
+| Arrays                                      | `Arrays.stream(array)` or `Stream.of(array)`                                | For primitives: `IntStream.of()`, `DoubleStream.of()`, etc. |
+| Stream factory                              | `Stream.of(...)`, `Stream.generate(...)`, `Stream.iterate(...)`             | Useful for programmatic generation.                         |
+| Files / I/O                                 | `Files.lines(Path)`, `BufferedReader.lines()`                               | Returns `Stream<String>`.                                   |
+| Primitive streams                           | `IntStream.range()`, `LongStream.rangeClosed()`                             | Specialized for primitives (avoid boxing overhead).         |
+
+---
+
+### 2. Stream Operations Categories
+
+#### A) **Intermediate Operations** (return a `Stream` — lazy)
+
+| Operation                          | Accepted Types          | Return Type    | Purpose                                           |
+| ---------------------------------- | ----------------------- | -------------- | ------------------------------------------------- |
+| `filter(Predicate<T>)`             | `Predicate<T>`          | `Stream<T>`    | Keep elements matching condition.                 |
+| `map(Function<T,R>)`               | `Function<T,R>`         | `Stream<R>`    | Transform elements.                               |
+| `mapToInt(ToIntFunction<T>)`       | `ToIntFunction<T>`      | `IntStream`    | Map to primitive int stream.                      |
+| `mapToLong(ToLongFunction<T>)`     | `ToLongFunction<T>`     | `LongStream`   | Map to primitive long stream.                     |
+| `mapToDouble(ToDoubleFunction<T>)` | `ToDoubleFunction<T>`   | `DoubleStream` | Map to primitive double stream.                   |
+| `flatMap(Function<T,Stream<R>>)`   | `Function<T,Stream<R>>` | `Stream<R>`    | Flatten nested streams.                           |
+| `distinct()`                       | –                       | `Stream<T>`    | Remove duplicates (uses `equals()`/`hashCode()`). |
+| `sorted()`                         | –                       | `Stream<T>`    | Natural order sort.                               |
+| `sorted(Comparator<T>)`            | `Comparator<T>`         | `Stream<T>`    | Custom order sort.                                |
+| `peek(Consumer<T>)`                | `Consumer<T>`           | `Stream<T>`    | Debug/log elements, does not modify stream.       |
+| `limit(long n)`                    | –                       | `Stream<T>`    | Take first `n` elements.                          |
+| `skip(long n)`                     | –                       | `Stream<T>`    | Skip first `n` elements.                          |
+
+---
+
+#### B) **Terminal Operations** (consumes stream)
+
+| Operation                                                          | Accepted Types         | Return Type   | Purpose                                     |
+| ------------------------------------------------------------------ | ---------------------- | ------------- | ------------------------------------------- |
+| `forEach(Consumer<T>)`                                             | `Consumer<T>`          | `void`        | Perform action on each element.             |
+| `forEachOrdered(Consumer<T>)`                                      | `Consumer<T>`          | `void`        | Respect encounter order (parallel streams). |
+| `toArray()`                                                        | –                      | `Object[]`    | Collect to array.                           |
+| `toArray(IntFunction<A[]>)`                                        | Array constructor      | `A[]`         | Collect to typed array.                     |
+| `reduce(BinaryOperator<T>)`                                        | `BinaryOperator<T>`    | `Optional<T>` | Reduce elements to one.                     |
+| `reduce(T identity, BinaryOperator<T>)`                            | Identity + op          | `T`           | Reduce with identity.                       |
+| `reduce(U identity, BiFunction<U,? super T,U>, BinaryOperator<U>)` | Accumulator + combiner | `U`           | Mutable reduction.                          |
+| `collect(Collector<T,A,R>)`                                        | `Collector`            | `R`           | Collect to container (List, Set, Map, etc). |
+| `min(Comparator<T>)`                                               | `Comparator<T>`        | `Optional<T>` | Minimum element.                            |
+| `max(Comparator<T>)`                                               | `Comparator<T>`        | `Optional<T>` | Maximum element.                            |
+| `count()`                                                          | –                      | `long`        | Number of elements.                         |
+| `anyMatch(Predicate<T>)`                                           | `Predicate<T>`         | `boolean`     | Any element matches.                        |
+| `allMatch(Predicate<T>)`                                           | `Predicate<T>`         | `boolean`     | All elements match.                         |
+| `noneMatch(Predicate<T>)`                                          | `Predicate<T>`         | `boolean`     | No element matches.                         |
+| `findFirst()`                                                      | –                      | `Optional<T>` | First element (encounter order).            |
+| `findAny()`                                                        | –                      | `Optional<T>` | Any element (esp. parallel streams).        |
+
+---
+
+#### C) **Short-Circuiting Operations**
+
+(Special subset of terminal ops that may stop early)
+
+| Operation     | Return Type   | Example                 |
+| ------------- | ------------- | ----------------------- |
+| `findFirst()` | `Optional<T>` | Stop after first match. |
+| `findAny()`   | `Optional<T>` | Stop after any match.   |
+| `anyMatch()`  | `boolean`     | Stop after finding one. |
+| `allMatch()`  | `boolean`     | Stop after failure.     |
+| `noneMatch()` | `boolean`     | Stop after success.     |
+| `limit(n)`    | `Stream<T>`   | Restricts traversal.    |
+
+---
+
+### 3. Collectors (via `collect()`)
+
+| Collector                                        | Return Type            | Purpose                    |
+| ------------------------------------------------ | ---------------------- | -------------------------- |
+| `Collectors.toList()`                            | `List<T>`              | Collect into `List`.       |
+| `Collectors.toSet()`                             | `Set<T>`               | Collect into `Set`.        |
+| `Collectors.toMap(Function<T,K>, Function<T,V>)` | `Map<K,V>`             | Collect into map.          |
+| `Collectors.groupingBy(Function<T,K>)`           | `Map<K,List<T>>`       | Group by classifier.       |
+| `Collectors.partitioningBy(Predicate<T>)`        | `Map<Boolean,List<T>>` | Partition true/false.      |
+| `Collectors.joining(CharSequence)`               | `String`               | Concatenate strings.       |
+| `Collectors.summarizingInt(ToIntFunction<T>)`    | `IntSummaryStatistics` | Count, min, max, sum, avg. |
+| `Collectors.counting()`                          | `Long`                 | Count elements.            |
+| `Collectors.reducing(...)`                       | `Optional<T>`/`T`      | General reduction.         |
+
+---
+
+### 4. Which Collections Need `.stream()`?
+
+| Collection Type                             | `.stream()` Support | Notes                                                         |
+| ------------------------------------------- | ------------------- | ------------------------------------------------------------- |
+| `Collection` (`List`, `Set`, `Queue`, etc.) | ✅ Yes               | Direct `.stream()` available.                                 |
+| `Map`                                       | ❌ No                | Must use `map.entrySet()`, `map.keySet()`, or `map.values()`. |
+| Arrays                                      | ❌ No                | Use `Arrays.stream(array)` or `Stream.of(array)`.             |
+| Primitive arrays (`int[]`, etc.)            | ❌ No                | Use `Arrays.stream(int[])` → `IntStream`.                     |
+
+---
+
+### 5. Example End-to-End
+
+```java
+List<String> names = List.of("Alice", "Bob", "Charlie", "David");
+
+Map<Integer, List<String>> grouped = names.stream()
+    .filter(n -> n.length() > 3)                // intermediate
+    .map(String::toUpperCase)                   // intermediate
+    .sorted()                                   // intermediate
+    .collect(Collectors.groupingBy(String::length)); // terminal
+
+System.out.println(grouped);
+```
+
 
 ## Concurrency Patterns
 
