@@ -207,28 +207,28 @@ In Java, a functional interface is an interface with:
 The functional interfaces provided by Java are(Abbrevation to remember **PFCSO**):
 
 - Predicate - return boolean values
-    - `Predicate<T>`
-    - `BiPredicate<T, U>`(takes 2 inputs)
+    - `Predicate&ltT&gt`
+    - `BiPredicate&ltT, U&gt`(takes 2 inputs)
     - abstract function: `boolean test(T t, U... u)`, here `...` is used as standin for "also"
 - Function - Take an input, and provide a definite replicable output based on it. Return type needs to be specified.
-    - `Function<T, R>`, R is the return type, and T is the input type
-    - `BiFunction<T, U, R>`, U is the second input type
+    - `Function&ltT, R&gt`, R is the return type, and T is the input type
+    - `BiFunction&ltT, U, R&gt`, U is the second input type
     - abstract function: `T apply(T t, U... u)`
 - Consumer - Take input, without any outputs.
-    - `Consumer<T>`
-    - `BiConsumer<T, U>`
+    - `Consumer&ltT&gt`
+    - `BiConsumer&ltT, U&gt`
     - abstract function: `void accept(T t, U... u)`
 - Supplier - Provide output
-    - `Supplier<T>`
+    - `Supplier&ltT&gt`
     - abstract function: `T get()`
 - Operator - Operate on the same datatype, providing an output of the same type
-    - `UnaryOperator<T>`
-    - `BinaryOperator<T>`
+    - `UnaryOperator&ltT&gt`
+    - `BinaryOperator&ltT&gt`
     - abstract function: `T apply(T t1, T... t2)`
 
 To avoid boxing/unboxing overhead:
 - IntFunction, LongFunction, DoubleFunction
-- ToIntFunction<T>, ToLongFunction<T>, ToDoubleFunction<T>
+- ToIntFunction&ltT&gt, ToLongFunction&ltT&gt, ToDoubleFunction&ltT&gt
 - IntPredicate, LongPredicate, DoublePredicate
 - IntConsumer, LongConsumer, DoubleConsumer
 - IntSupplier, LongSupplier, DoubleSupplier
