@@ -24,11 +24,7 @@ However, on further study, this was found to be a bit of an issue, in using proc
 	- [Sales](/business/sales/index.md)
 	- [Marketing](/business/marketing/index.md)
 	- [Research and Development](/business/research_and_development/index.md)
-- [Technology](/technology/index.md)(to be structured better)
-	- [Digital](/technology/digital/index.md)
-	- [Statistics](/technology/statistics/index.md)
-	- [Radio](/technology/radio/index.md)
-
+- [Technology](/technology/index.md)
 
 On further analysis, there were some topics found that do not align to just businesses and technology, but both use them in various ways, i.e. are vastly interdisciplinary. These interdisciplinary topics will be focused on separately.
 
