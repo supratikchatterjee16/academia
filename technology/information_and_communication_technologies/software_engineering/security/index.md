@@ -1,6 +1,6 @@
 # Security in Softwares
 
-This article explains the security considerations in place for securing an application. The security uses the [OSI Model](/technology/digital/networks/osi_model.md).
+This article explains the security considerations in place for securing an application. The security uses the [OSI Model](technology/information_and_communication_technologies/networks/osi_model.md).
 
 Securing each layer of the **OSI Model** involves applying different strategies, technologies, and best practices tailored to the specific function of that layer. Here's a breakdown of how to secure each layer from **Layer 1 (Physical)** up to **Layer 7 (Application)**:
 
