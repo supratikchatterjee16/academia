@@ -194,6 +194,90 @@ public class Main {
 
 ## Functional Programming with Java
 
+### The Type of a Lambda Expression
+
+A lambda expression in Java is a concise way to represent an implementation of a functional interface (an interface with a single abstract method) using an inline block of code.
+
+It uses the notations:
+```java
+(parameters) -> expression
+(parameters) -> { statements }
+```
+
+This can take the following forms:
+| Notation                         | Example                                      | Meaning                                      |
+| -------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| **No parameters**                | `() -> 42`                                   | A function that takes nothing, returns `42`. |
+| **Single parameter (no type)**   | `x -> x * 2`                                 | Takes one parameter `x`, returns `x * 2`.    |
+| **Single parameter (with type)** | `(int x) -> x * 2`                           | Explicitly declares type.                    |
+| **Multiple parameters**          | `(a, b) -> a + b`                            | Takes two parameters, returns sum.           |
+| **With multiple statements**     | `(x, y) -> { int sum = x + y; return sum; }` | Block body, must use `return`.               |
+| **Void body**                    | `(s) -> System.out.println(s)`               | Performs action, returns nothing.            |
+
+In Java, a **lambda expression itself does not have a concrete type like `class` or `interface`**.
+Instead, its type is inferred from the **context** in which it is used.
+
+Specifically:
+👉 A lambda expression’s type is a **functional interface** (an interface with exactly one abstract method, marked by `@FunctionalInterface`).
+
+---
+
+#### Example
+
+```java
+Runnable r = () -> System.out.println("Hello");
+```
+
+* Here, `() -> System.out.println("Hello")` is a **lambda expression**.
+* Its type is inferred as `Runnable` because `Runnable` has exactly one abstract method:
+
+  ```java
+  void run();
+  ```
+
+---
+
+```java
+Comparator<String> cmp = (a, b) -> a.length() - b.length();
+```
+
+* Type of `(a, b) -> a.length() - b.length()` is `Comparator<String>`,
+  because `Comparator` has a single abstract method:
+
+  ```java
+  int compare(T o1, T o2);
+  ```
+
+---
+
+#### Generic Lambdas
+
+```java
+Function<Integer, String> f = i -> "Value: " + i;
+```
+
+* Here, the lambda type is `Function<Integer, String>`.
+* The compiler ensures the parameter type (`Integer`) and return type (`String`) match the `apply` method of `Function<T,R>`.
+
+---
+
+#### Key Point
+
+* Lambda expressions in Java are **not objects of their own class**.
+* They are **compiled to instances of functional interfaces**, often implemented via invokedynamic (JVM-level optimization).
+
+---
+
+#### Summary Table
+
+| Example                          | Functional Interface Type                                   |
+| -------------------------------- | ----------------------------------------------------------- |
+| `() -> System.out.println("Hi")` | `Runnable`                                                  |
+| `(a, b) -> a + b`                | `BinaryOperator<T>` or `Comparator<T>` depending on context |
+| `s -> s.length()`                | `Function<String, Integer>`                                 |
+| `x -> x > 10`                    | `Predicate<Integer>`                                        |
+| `() -> 42`                       | `Supplier<Integer>`                                         |
+
 ### Functional Interface
 
 In Java, a functional interface is an interface with:
