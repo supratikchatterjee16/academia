@@ -106,5 +106,5 @@ Share the ground rules for the brainstorming session with your team and gently r
 
 Next, give some additional inspiration to the group to encourage creative thinking and start one or more rounds of time boxed group brainstorming. For example:
 * Use inspiration cards (find examples below in the ‘Method in action’ section below) or Brainstorm Cards from Board of Innovation
-* Use inspiring prompts like “What would Google/Apple/<any leading company> do?”
+* Use inspiring prompts like “What would Google/Apple/[any leading company] do?”
 * Use ‘reversed’ brainstorming by asking “How could you prevent the problem from being solved” which could inspire then creative ideas to solve as well
