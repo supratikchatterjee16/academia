@@ -87,7 +87,7 @@ Huber Loss combines the robustness of L1 with the stability of L2, essentially t
 Huber Loss is characterized by the parameter delta (𝛿). For a prediction f(x) of the data point y, with the characterizing parameter 𝛿, Huber Loss is formulated as:
 
 
-![Huber Loss function](images/huber-loss.PNG)
+![Huber Loss function](images/huber-loss.png)
 
 ## Loss functions for Classification
 
@@ -131,4 +131,4 @@ Kullback Leibler Divergence Loss is a measure of how a distribution varies from 
 
 The number of information lost in the predicted distribution is used as a measure. The KL Divergence of a distribution P(x) from Q(x) is given by:
 
-![KLDL function](images/kl-divergence-loss.PNG)
+![KLDL function](images/kl-divergence-loss.png)
