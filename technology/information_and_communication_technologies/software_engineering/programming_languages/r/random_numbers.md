@@ -6,4 +6,4 @@ rnorm(#vals,  mean, std_deviation)
 rpois(#vals, mean)
 rbinom(#vals, param_m, probability)
 
-hist(var, main="<Distribution Type>")
+hist(var, main="{Distribution Type}")
