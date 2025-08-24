@@ -21,7 +21,7 @@ These core concepts will be touched upon in their own segments, or will be amalg
 
 ## Important Annotations
 
-Spring Core provides Inversion of Control and Dependency Injection via annotations. These are majorly done via annotations. Some of the important annotations are listed here:
+Spring Core provides Inversion of Control and Dependency Injection via annotations. Some of the important annotations are listed here:
 
 ### `@SpringBootApplication`
 
@@ -450,9 +450,248 @@ class OrderControllerAdviceTest {
 * [ ] Configure **transaction rollback** rules where needed.
 * [ ] Don’t leak internals (SQL, stack traces) in messages.
 
-## ORM
+## Repositories(including ORM)
 
+### **RDBMS Repositories in Spring Boot**
 
+Spring Boot uses **Spring Data JPA** for interacting with relational databases. Here’s a detailed setup:
+
+#### **Step 1: Dependencies**
+
+In `pom.xml`:
+
+```xml
+<dependencies>
+    <!-- Spring Boot Starter Data JPA -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!-- H2 Database for testing (replace with MySQL/PostgreSQL in prod) -->
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <scope>runtime</scope>
+    </dependency>
+
+    <!-- Optional: Spring Boot Starter Web -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+</dependencies>
+```
+
+---
+
+#### **Step 2: Configuration**
+
+`application.properties` (or `application.yml`):
+
+```properties
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+This sets up an in-memory H2 database for testing.
+
+---
+
+#### **Step 3: Entity Definition**
+
+```java
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    private String email;
+
+    // Constructors, getters, setters
+    public User() {}
+
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
+
+    // Getters and setters
+}
+```
+
+---
+
+#### **Step 4: Repository Interface**
+
+Spring Data JPA automatically provides **CRUD operations**, and you can also define **custom queries**.
+
+```java
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import java.util.List;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    // Derived query method
+    List<User> findByUsername(String username);
+
+    // Custom query using JPQL
+    @Query("SELECT u FROM User u WHERE u.email LIKE %:domain%")
+    List<User> findByEmailDomain(@Param("domain") String domain);
+}
+```
+
+**Default methods available** include: `save()`, `findById()`, `findAll()`, `deleteById()`, etc.
+
+---
+
+#### **Step 5: Service and Usage Example**
+
+```java
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User createUser(String username, String email) {
+        return userRepository.save(new User(username, email));
+    }
+
+    public List<User> getUsersByDomain(String domain) {
+        return userRepository.findByEmailDomain(domain);
+    }
+}
+```
+
+---
+
+### **File Repositories with External Storage**
+
+Spring Boot can work with **external file repositories** like **Amazon S3, Google Cloud Storage, or other file servers**. Unlike storing in the local filesystem, you interact via APIs.
+
+Here’s an example with **Amazon S3**:
+
+---
+
+#### **Step 1: Dependencies**
+
+```xml
+<dependency>
+    <groupId>software.amazon.awssdk</groupId>
+    <artifactId>s3</artifactId>
+</dependency>
+```
+
+---
+
+#### **Step 2: Configuration**
+
+`application.properties`:
+
+```properties
+aws.accessKeyId=YOUR_ACCESS_KEY
+aws.secretAccessKey=YOUR_SECRET_KEY
+aws.region=us-east-1
+aws.s3.bucketName=my-bucket
+```
+
+---
+
+#### **Step 3: File Repository Service**
+
+```java
+import org.springframework.stereotype.Repository;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.*;
+
+import java.io.InputStream;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Repository
+public class FileRepository {
+
+    private final S3Client s3Client;
+    private final String bucketName = "my-bucket";
+
+    public FileRepository(S3Client s3Client) {
+        this.s3Client = s3Client;
+    }
+
+    // "Create" / "Save"
+    public void save(String key, InputStream inputStream, long contentLength) {
+        PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+                .bucket(bucketName)
+                .key(key)
+                .build();
+        s3Client.putObject(putObjectRequest, software.amazon.awssdk.core.sync.RequestBody.fromInputStream(inputStream, contentLength));
+    }
+
+    // "Read"
+    public InputStream findByKey(String key) {
+        GetObjectRequest getObjectRequest = GetObjectRequest.builder()
+                .bucket(bucketName)
+                .key(key)
+                .build();
+        return s3Client.getObject(getObjectRequest);
+    }
+
+    // "Delete"
+    public void deleteByKey(String key) {
+        DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
+                .bucket(bucketName)
+                .key(key)
+                .build();
+        s3Client.deleteObject(deleteObjectRequest);
+    }
+
+    // List files (like "findAll")
+    public List<String> findAllKeys() {
+        ListObjectsV2Request listObjectsRequest = ListObjectsV2Request.builder()
+                .bucket(bucketName)
+                .build();
+        return s3Client.listObjectsV2(listObjectsRequest)
+                .contents()
+                .stream()
+                .map(S3Object::key)
+                .collect(Collectors.toList());
+    }
+}
+```
+
+✅ This approach allows you to **store files externally** without relying on local server storage.
+
+---
+
+#### **Key Differences:**
+
+| Feature   | RDBMS Repositories       | File Repositories (S3)           |
+| --------- | ------------------------ | -------------------------------- |
+| Data type | Structured data (tables) | Files (binary or text)           |
+| Storage   | DB (SQL)                 | External storage (S3, GCS, etc.) |
+| Access    | JPA repositories         | SDK/API calls                    |
+| Queries   | SQL/JPQL                 | File paths and keys              |
 
 ## Misc
 
