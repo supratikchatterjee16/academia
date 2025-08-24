@@ -1,6 +1,6 @@
 # Dynatrace
 
-Dynatrace is a revolutionary platform that delivers analytics and automation for unified observability and security.
+Dynatrace is a platform that delivers analytics and automation for unified observability and security.
 
 - Answers and intelligent automation — Dynatrace uses causal AI to automate DevSecOps at scale and deliver the precise answers teams need to innovate and thrive in the modern cloud.
 - Empowerment — Dynatrace breaks down team silos and proactively prevents issues before they affect end users.
