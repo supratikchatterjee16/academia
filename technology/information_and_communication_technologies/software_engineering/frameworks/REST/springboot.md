@@ -680,8 +680,6 @@ public class FileRepository {
 }
 ```
 
-✅ This approach allows you to **store files externally** without relying on local server storage.
-
 ---
 
 #### **Key Differences:**
@@ -692,6 +690,156 @@ public class FileRepository {
 | Storage   | DB (SQL)                 | External storage (S3, GCS, etc.) |
 | Access    | JPA repositories         | SDK/API calls                    |
 | Queries   | SQL/JPQL                 | File paths and keys              |
+
+---
+
+### Transaction Managers
+
+In **Spring Boot**, a **Transaction Manager** is the component responsible for managing **transactions** (begin, commit, rollback) in a consistent way across different resources like databases, JMS, JPA, etc.
+
+Spring provides a unified abstraction:
+
+```java
+org.springframework.transaction.PlatformTransactionManager
+```
+
+All transaction managers implement this interface.
+
+Transactions ensure the **ACID properties** (Atomicity, Consistency, Isolation, Durability).
+
+---
+
+#### Common Transaction Managers in Spring Boot
+
+Depending on the persistence technology, Spring Boot auto-configures the right `PlatformTransactionManager`.
+
+* **DataSourceTransactionManager** → for **JDBC** (plain SQL).
+* **JpaTransactionManager** → for **JPA/Hibernate**.
+* **HibernateTransactionManager** → for **native Hibernate** usage.
+* **JtaTransactionManager** → for **distributed transactions** (across multiple DBs, JMS, etc.).
+* **ReactiveTransactionManager** → for **reactive drivers** (R2DBC, MongoDB reactive).
+
+---
+
+#### How They’re Used
+
+There are **two main ways** to use them in Spring Boot:
+
+###### 1. **Declarative Transactions (Recommended)**
+
+Use the `@Transactional` annotation.
+
+Example with JPA:
+
+```java
+@Service
+public class OrderService {
+
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Transactional
+    public void placeOrder(Order order) {
+        orderRepository.save(order);
+        // If any RuntimeException is thrown, transaction rolls back automatically
+    }
+}
+```
+
+* By default, `@Transactional` rolls back on `RuntimeException` and `Error`.
+* You can configure rollback rules:
+
+  ```java
+  @Transactional(rollbackFor = Exception.class)
+  ```
+
+Spring Boot automatically wires the right `TransactionManager` (e.g., `JpaTransactionManager` if using Spring Data JPA).
+
+---
+
+###### 2. **Programmatic Transactions**
+
+Use `PlatformTransactionManager` directly.
+
+Example:
+
+```java
+@Service
+public class PaymentService {
+
+    @Autowired
+    private PlatformTransactionManager transactionManager;
+
+    public void processPayment() {
+        TransactionDefinition def = new DefaultTransactionDefinition();
+        TransactionStatus status = transactionManager.getTransaction(def);
+
+        try {
+            // perform DB operations
+            transactionManager.commit(status);
+        } catch (Exception e) {
+            transactionManager.rollback(status);
+            throw e;
+        }
+    }
+}
+```
+
+This gives more control but is rarely needed — mostly used for custom transaction handling.
+
+---
+
+#### Example: Multiple Transaction Managers
+
+If you have multiple datasources, you may need multiple transaction managers:
+
+```java
+@Bean
+public PlatformTransactionManager primaryTxManager(
+        @Qualifier("primaryDataSource") DataSource dataSource) {
+    return new DataSourceTransactionManager(dataSource);
+}
+
+@Bean
+public PlatformTransactionManager secondaryTxManager(
+        @Qualifier("secondaryDataSource") DataSource dataSource) {
+    return new DataSourceTransactionManager(dataSource);
+}
+```
+
+Then in service code:
+
+```java
+@Transactional("primaryTxManager")
+public void doSomethingInPrimaryDb() { ... }
+
+@Transactional("secondaryTxManager")
+public void doSomethingInSecondaryDb() { ... }
+```
+
+---
+
+#### Key Benefits
+
+* Consistent transaction management across JDBC, JPA, JMS, etc.
+* Eliminates boilerplate commit/rollback code.
+* Integrates with Spring Data repositories.
+* Supports both **local transactions** and **global/distributed transactions**.
+
+---
+
+##### Transaction Types
+
+| Propagation            | Behavior                          | Example Use Case             |
+| ---------------------- | --------------------------------- | ---------------------------- |
+| **REQUIRED** (default) | Join existing, else create new    | General business logic       |
+| **REQUIRES\_NEW**      | Always start new, suspend current | Logging, auditing            |
+| **NESTED**             | Savepoints, rollback only inner   | Batch jobs, partial rollback |
+| **SUPPORTS**           | Join if exists, else run non-tx   | Read-only queries            |
+| **MANDATORY**          | Must join existing, else error    | DAO layer                    |
+| **NOT\_SUPPORTED**     | Suspend transaction, run non-tx   | Long-running ops             |
+| **NEVER**              | Must run non-tx, else error       | Health checks                |
+
 
 ## Misc
 
