@@ -1,10 +1,10 @@
 # React JS
 
- Content from : LinkedIn
+Content from : LinkedIn
 
- This was created by Facebook(now Meta).
+This was created by Facebook(now Meta).
 
- ReactJS has a developer tool, which allows easy debugging and development.
+ReactJS has a developer tool, which allows easy debugging and development.
 
 
 Creating a project :
