@@ -827,8 +827,25 @@ public void doSomethingInSecondaryDb() { ... }
 * Supports both **local transactions** and **global/distributed transactions**.
 
 ---
+#### Details of Declarative Transaction(`@Transactional`)
 
-##### Transaction Types
+Parameters accepted by the annotation are:
+
+```java
+@Transactional(
+    propagation = Propagation.REQUIRES_NEW,
+    isolation = Isolation.SERIALIZABLE,
+    timeout = 30,
+    readOnly = false,
+    rollbackFor = {IOException.class, SQLException.class},
+    noRollbackFor = IllegalArgumentException.class
+)
+public void performDatabaseOperation() {
+    // business logic
+}
+```
+
+##### Propagation Types
 
 | Propagation            | Behavior                          | Example Use Case             |
 | ---------------------- | --------------------------------- | ---------------------------- |
@@ -840,6 +857,15 @@ public void doSomethingInSecondaryDb() { ... }
 | **NOT\_SUPPORTED**     | Suspend transaction, run non-tx   | Long-running ops             |
 | **NEVER**              | Must run non-tx, else error       | Health checks                |
 
+##### Isolation Types
+
+| **Isolation Type**     | **Behavior**                                                                                                                                         | **Example Use Case**                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| **`DEFAULT`**          | Uses the **default isolation** of the underlying database (varies by DBMS, e.g., most use `READ_COMMITTED`).                                         | When you don’t need to enforce a stricter level and are okay with DB defaults.                   |
+| **`READ_UNCOMMITTED`** | Allows **dirty reads** (reading uncommitted changes from other transactions), non-repeatable reads, phantom reads. Fastest but least safe.           | Rarely used. Possible in reporting queries where stale/dirty data is acceptable.                 |
+| **`READ_COMMITTED`**   | Prevents **dirty reads**. Still allows **non-repeatable reads** (a row may change between reads) and **phantom reads** (new rows may appear).        | Most common default (e.g., Oracle, SQL Server). Suitable for general OLTP systems.               |
+| **`REPEATABLE_READ`**  | Prevents **dirty reads** and **non-repeatable reads**. Still allows **phantom reads** (new rows may appear when scanning ranges).                    | When you need stable row-level reads but can tolerate phantom rows (e.g., MySQL InnoDB default). |
+| **`SERIALIZABLE`**     | Strictest level. Prevents **dirty reads, non-repeatable reads, and phantom reads**. Transactions execute as if sequential (serial order). Very slow. | Financial systems, critical operations where correctness > performance.                          |
 
 ## Misc
 

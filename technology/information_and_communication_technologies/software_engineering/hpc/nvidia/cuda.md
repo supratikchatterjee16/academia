@@ -2,8 +2,6 @@
 
 This is a certified course within NVIDIA DLI.
 
-Refer to [PDF](./nvidia_cuda_c).
-
 The work done by GPU is assynchronous. The process needs to wait for synchronizing using ```cudaDeviceSynchronize()```.
 
 Parts of a GPU function declaration for CUDA : 
@@ -11,6 +9,88 @@ Parts of a GPU function declaration for CUDA :
 ```C
 kernelName<<< #blocks, #threads_per_block >>>()
 ```
+
+## Introduction
+
+CUDA (Compute Unified Device Architecture) is **NVIDIA’s parallel computing platform and programming model**, released in 2007.
+It lets developers use **NVIDIA GPUs for general-purpose computing (GPGPU)**, extending beyond graphics rendering into scientific computing, deep learning, data analytics, and more.
+
+CUDA provides:
+
+* A **C/C++/Fortran API** with GPU extensions (`__global__`, `__device__`, etc.)
+* A **runtime** and **driver API** for GPU management
+* Optimized **libraries** (cuBLAS, cuDNN, cuFFT, etc.)
+* Compiler toolchain (NVCC)
+
+### **Host vs Device**
+
+* **Host** = CPU & system memory (RAM)
+* **Device** = GPU & global memory (VRAM)
+* CUDA programs split work between host and device.
+
+### **Kernels**
+
+* A **kernel** is a function executed on the GPU.
+* Defined with `__global__` keyword in CUDA C/C++.
+* Invoked with \[grid, block\] execution configuration syntax.
+
+```cpp
+__global__ void vectorAdd(float *a, float *b, float *c, int n) {
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i < n) c[i] = a[i] + b[i];
+}
+```
+
+### **Thread Hierarchy**
+
+CUDA organizes threads in a **grid–block–thread** model:
+
+* **Thread**: smallest unit of execution
+* **Block**: group of threads (1D/2D/3D)
+* **Grid**: group of blocks (1D/2D/3D)
+
+Each thread has unique IDs (`threadIdx`, `blockIdx`) to identify work.
+
+### **Memory Hierarchy**
+
+Different memory types with trade-offs:
+
+* **Registers** (per-thread, fastest)
+* **Shared memory** (per-block, low latency, useful for collaboration)
+* **Global memory** (device-wide, high latency, but large)
+* **Constant & texture memory** (special cached memories)
+
+### **SIMT (Single Instruction, Multiple Thread)**
+
+* Threads are executed in groups called **warps** (32 threads).
+* All threads in a warp execute the same instruction (though divergence is possible).
+
+### **Streams & Concurrency**
+
+* **Streams** allow overlapping computation and data transfers.
+* Enables pipelining (compute on one batch while transferring another).
+
+---
+
+### CUDA Version Evolution (Highlights)
+
+NVIDIA has steadily expanded CUDA since 2007. Here are the key version milestones:
+
+| **Version**                  | **Release Year** | **Key Features / Changes**                                                                         |
+| ---------------------------- | ---------------- | -------------------------------------------------------------------------------------------------- |
+| **1.0 (2007)**               | 2007             | First release, GPU programming in C, targeting Tesla architecture.                                 |
+| **2.x (2008–2009)**          | 2008–09          | Double precision support, improved atomics, multi-GPU support.                                     |
+| **3.x (2010–2011)**          | 2010–11          | Fermi architecture: unified cache, ECC memory, improved concurrency.                               |
+| **4.x (2011)**               | 2011             | Unified Virtual Addressing (UVA), peer-to-peer GPU memory access.                                  |
+| **5.x (2012)**               | 2012             | Kepler architecture: dynamic parallelism (kernels launch kernels), shuffle instructions.           |
+| **6.x (2014)**               | 2014             | Maxwell support, Unified Memory (single address space across CPU+GPU).                             |
+| **7.x (2015)**               | 2015             | Pascal architecture: NVLink, more Unified Memory improvements.                                     |
+| **8.0 (2016)**               | 2016             | Pascal GPUs: half-precision (FP16), CUDA Graphs API.                                               |
+| **9.x (2017)**               | 2017             | Volta architecture: Tensor Cores, warp-level primitives.                                           |
+| **10.x (2018–2019)**         | 2018–19          | Turing architecture, enhanced Tensor Cores (mixed precision).                                      |
+| **11.x (2020–2021)**         | 2020–21          | Ampere architecture, CUDA Python, expanded C++17 support.                                          |
+| **12.x (2022–2023)**         | 2022–23          | Hopper architecture, FP8 precision, improved asynchronous execution, new memory models.            |
+| **Latest (CUDA 12.5, 2024)** | 2024             | Hopper + Ada Lovelace optimizations, streamlined multi-GPU workflows, expanded cooperative groups. |
 
 CUDA provided variables inside kernel, for describing executing thread, block and grid : 
 
