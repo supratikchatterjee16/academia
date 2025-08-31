@@ -14,7 +14,7 @@ A **serial algorithm** (also called a **sequential algorithm**) is an algorithm 
 
 ### 1. **Sum of Elements in an Array**
 
-```pseudocode
+```ini
 function sumArray(arr)
     total = 0
     for i from 0 to length of arr - 1
@@ -27,7 +27,7 @@ function sumArray(arr)
 
 ### 2. **Find Maximum in an Array**
 
-```pseudocode
+```ini
 function findMax(arr)
     max = arr[0]
     for i from 1 to length of arr - 1
@@ -41,7 +41,7 @@ function findMax(arr)
 
 ### 3. **Linear Search**
 
-```pseudocode
+```ini
 function linearSearch(arr, target)
     for i from 0 to length of arr - 1
         if arr[i] == target
@@ -54,7 +54,7 @@ function linearSearch(arr, target)
 
 ### 4. **Bubble Sort**
 
-```pseudocode
+```ini
 function bubbleSort(arr)
     for i from 0 to length of arr - 1
         for j from 0 to length of arr - i - 2
@@ -67,7 +67,7 @@ function bubbleSort(arr)
 
 ### 5. **Counting Even Numbers**
 
-```pseudocode
+```ini
 function countEvens(arr)
     count = 0
     for i from 0 to length of arr - 1

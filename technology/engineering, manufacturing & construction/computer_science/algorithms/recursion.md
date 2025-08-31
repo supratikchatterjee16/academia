@@ -10,7 +10,7 @@ A recursion algorithm is an algorithm that solves a problem by calling itself wi
 
 **Pseudocode:**
 
-```pseudocode
+```ini
 function factorial(n)
     if n == 0 or n == 1
         return 1
@@ -26,7 +26,7 @@ function factorial(n)
 
 **Pseudocode:**
 
-```pseudocode
+```ini
 function fibonacci(n)
     if n == 0
         return 0
@@ -44,7 +44,7 @@ function fibonacci(n)
 
 **Pseudocode:**
 
-```pseudocode
+```ini
 function sumArray(arr, n)
     if n == 0
         return 0
@@ -60,7 +60,7 @@ function sumArray(arr, n)
 
 **Pseudocode:**
 
-```pseudocode
+```ini
 function reverseString(s)
     if length of s <= 1
         return s
@@ -76,7 +76,7 @@ function reverseString(s)
 
 **Pseudocode:**
 
-```pseudocode
+```ini
 function binarySearch(arr, target, left, right)
     if left > right
         return -1
@@ -97,7 +97,7 @@ function binarySearch(arr, target, left, right)
 
 **Pseudocode:**
 
-```pseudocode
+```ini
 function towerOfHanoi(n, source, destination, auxiliary)
     if n == 1
         print "Move disk 1 from " + source + " to " + destination

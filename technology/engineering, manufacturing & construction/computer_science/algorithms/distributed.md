@@ -24,7 +24,7 @@ A **distributed algorithm** is an algorithm designed to **run across multiple co
 
 Each node has a unique ID and is connected in a ring. Goal: elect the node with the highest ID.
 
-```pseudocode
+```ini
 function onStart(node)
     sendMessageToNext({type: "election", id: node.id})
 
@@ -51,7 +51,7 @@ function onReceive(message)
 
 Each node wants exclusive access to a shared resource.
 
-```pseudocode
+```ini
 onRequestCS()
     timestamp = current time
     requestQueue.add(self)
@@ -81,7 +81,7 @@ onExitCS()
 
 Used for broadcasting or synchronization.
 
-```pseudocode
+```ini
 every T seconds:
     if node knows rumor
         select random neighbor

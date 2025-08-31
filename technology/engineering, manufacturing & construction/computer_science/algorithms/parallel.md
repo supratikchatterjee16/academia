@@ -24,7 +24,7 @@ A **parallel algorithm** is an algorithm that splits a problem into **independen
 
 ### 1. **Parallel Sum of Array Elements**
 
-```pseudocode
+```ini
 function parallelSum(arr)
     n = length of arr
     total = 0
@@ -38,7 +38,7 @@ function parallelSum(arr)
 
 ### 2. **Parallel Maximum in Array**
 
-```pseudocode
+```ini
 function parallelMax(arr)
     maxVal = -∞
     parallel for i from 0 to length of arr - 1
@@ -50,7 +50,7 @@ function parallelMax(arr)
 
 ### 3. **Parallel Matrix Addition**
 
-```pseudocode
+```ini
 function addMatrices(A, B)
     rows = number of rows in A
     cols = number of columns in A
@@ -65,7 +65,7 @@ function addMatrices(A, B)
 
 ### 4. **Parallel Merge Sort (Divide and Conquer)**
 
-```pseudocode
+```ini
 function parallelMergeSort(arr)
     if length of arr ≤ 1
         return arr
