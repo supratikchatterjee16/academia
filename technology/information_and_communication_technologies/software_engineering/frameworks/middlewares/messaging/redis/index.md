@@ -97,7 +97,7 @@ By default, Redis is **not secure out of the box** (it trusts localhost connecti
 
 * **Bind to localhost** (default):
 
-  ```conf
+  ```ini
   bind 127.0.0.1
   ```
 * Or, restrict to a private network (VPC, internal subnet).
@@ -112,12 +112,12 @@ By default, Redis is **not secure out of the box** (it trusts localhost connecti
 
 * Redis has **password-based authentication**. In `redis.conf`:
 
-  ```conf
+  ```ini
   requirepass strong_password_here
   ```
 * Or in Redis 6+, use **ACLs (Access Control Lists):**
 
-  ```conf
+  ```ini
   user app1 on >strongpassword ~* +@all
   user readonly on >readonlypass ~* +@read
   ```
@@ -130,7 +130,7 @@ By default, Redis is **not secure out of the box** (it trusts localhost connecti
 * Redis 6+ supports TLS natively.
 * In `redis.conf`:
 
-  ```conf
+  ```ini
   tls-port 6379
   port 0
   tls-cert-file /etc/ssl/redis.crt
@@ -146,7 +146,7 @@ By default, Redis is **not secure out of the box** (it trusts localhost connecti
 * Some commands (like `FLUSHALL`, `CONFIG`, `SHUTDOWN`) can be abused.
 * Disable them in `redis.conf`:
 
-  ```conf
+  ```ini
   rename-command FLUSHALL ""
   rename-command FLUSHDB ""
   rename-command CONFIG ""
@@ -168,7 +168,7 @@ By default, Redis is **not secure out of the box** (it trusts localhost connecti
 * Monitor with **Prometheus + Grafana**, or **RedisInsight**.
 * Enable logging in `redis.conf`:
 
-  ```conf
+  ```ini
   logfile /var/log/redis/redis-server.log
   ```
 
@@ -176,7 +176,7 @@ By default, Redis is **not secure out of the box** (it trusts localhost connecti
 
 ## Sample secure Redis Configuration
 
-```conf
+```ini
 ########################################
 # NETWORK SECURITY
 ########################################

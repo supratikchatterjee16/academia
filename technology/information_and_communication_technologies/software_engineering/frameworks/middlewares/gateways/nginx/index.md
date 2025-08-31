@@ -309,7 +309,7 @@ A **reverse proxy** means NGINX sits between clients and backend servers, forwar
 
 Create a new server block:
 
-```conf
+```ini
 server {
     listen 80;
     server_name myapp.com;
