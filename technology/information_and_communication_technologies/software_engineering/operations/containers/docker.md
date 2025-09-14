@@ -233,6 +233,97 @@ A **Dockerfile** is a script with instructions to build an image.
   * `ARG`: Only available at **build time**.
   * `ENV`: Persists in the built image and at **runtime**.
 
+### **What is a Docker image layer?**
+
+* A **Docker image** is built up of **layers**, each representing a **set of filesystem changes**.
+* Each **instruction in a Dockerfile** (e.g., `FROM`, `RUN`, `COPY`) usually creates a new layer.
+* Layers are **stacked on top of each other**, forming the final image.
+
+**Key properties of layers:**
+
+1. **Immutable:** Once created, a layer never changes. If you rebuild, a layer can be reused from cache.
+2. **Cached:** Docker caches layers; if a layer hasn’t changed, Docker reuses it, speeding up builds.
+3. **Shared:** Layers can be shared between images. For example, two Python images may share the same base `python:3.11-slim` layer.
+
+### **Dockerfile instructions and layers**
+
+| Instruction        | Creates a new layer? | Notes                                                |
+| ------------------ | -------------------- | ---------------------------------------------------- |
+| `FROM`             | Yes                  | Base image is a layer.                               |
+| `RUN`              | Yes                  | Adds filesystem changes from the command.            |
+| `COPY`/`ADD`       | Yes                  | Copies files into image; creates a layer.            |
+| `WORKDIR`          | No                   | Changes working dir; does **not** create a layer.    |
+| `ENV`              | No                   | Adds environment variables; no layer for filesystem. |
+| `CMD`/`ENTRYPOINT` | No                   | Metadata only; no filesystem change.                 |
+
+### **How layers are cached**
+
+* Docker checks **instruction + context** to see if a layer can be reused.
+* Example:
+
+```dockerfile
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY app.py .
+```
+
+**Layer breakdown:**
+
+1. `FROM python:3.11-slim` → cached if already pulled
+2. `WORKDIR /app` → no new filesystem layer
+3. `COPY requirements.txt .` → new layer
+4. `RUN pip install ...` → new layer (big, can be cached if `requirements.txt` unchanged)
+5. `COPY app.py .` → new layer
+
+* **Important:** Changing `requirements.txt` invalidates the `RUN pip install` layer; Docker rebuilds that layer.
+* Layers **on top** of a changed layer are also rebuilt.
+
+### **Benefits of layering**
+
+1. **Faster builds**: Unchanged layers are reused.
+2. **Smaller downloads**: Only layers not present locally are downloaded.
+3. **Storage efficiency**: Layers are shared between images.
+
+### **Best practices to optimize layers**
+
+1. **Minimize number of layers** for small, lean images.
+
+   * Combine multiple commands in a single `RUN`:
+
+```dockerfile
+RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+```
+
+2. **Order layers by frequency of change**:
+
+   * Put rarely changing steps (like `pip install`) **before** frequently changing steps (`COPY app.py`).
+   * This allows caching and speeds up rebuilds.
+
+3. **Use `.dockerignore`**:
+
+   * Exclude unnecessary files from the build context; prevents invalidating cache.
+
+### **Visualizing layers**
+
+You can inspect image layers:
+
+```bash
+docker history myimage:latest
+```
+
+Example output:
+
+```
+IMAGE          CREATED       CREATED BY                     SIZE
+abcdef123456   2 days ago    COPY app.py .                  1KB
+123456abcdef   2 days ago    RUN pip install -r req.txt    150MB
+7890abcdef12   2 weeks ago   FROM python:3.11-slim         30MB
+```
+
+* Shows how each Dockerfile instruction contributes to the final image.
+
 ### Example
 
 ```dockerfile
@@ -421,7 +512,6 @@ volumes:
 | **Secrets**         | Secure way to store sensitive information (like passwords, tokens, certificates) and make them available only to authorized services.                          |
 | **Configs**         | Non-sensitive configuration data that services can consume (similar to secrets but unencrypted).                                                               |
 | **Swarm Mode**      | Docker Engine mode that enables clustering and orchestration features (activated with `docker swarm init`).                                                    |
-
 
 ### **How to Use Docker Swarm**
 
@@ -634,3 +724,163 @@ If you want more features (UI, RBAC, image scanning, replication):
 * Reduce dependency on Docker Hub limits (rate limiting, outages).
 * Speed up deployments by keeping images close to the runtime environment (edge/local cache).
 * Integrates with **CI/CD pipelines** for automated builds and pushes.
+
+## Building for multiple architectures
+
+### **Key Findings on Multi-Architecture Builds**
+
+1. **Docker Swarm will only schedule a service on a node if the image is compatible with its architecture.**
+
+   * `alfred` node is x86\_64 (amd64).
+   * `rpi1` node is ARMv7.
+   * Swarm will not run a container on a node if the node cannot pull or run the image architecture.
+
+2. **Buildx is required for multi-arch images**.
+
+   * Default `docker` driver can only build **host architecture**.
+   * `docker-container` driver with BuildKit can build multiple architectures using QEMU.
+
+3. **HTTP local registries are a problem for Buildx**.
+
+   * BuildKit **enforces HTTPS** by default when using `docker-container` driver.
+   * `insecure-registries` in `/etc/docker/daemon.json` **does not work** for Buildx multi-arch pushes.
+   * Options:
+
+     * Use HTTPS for your registry (recommended)
+     * Build images natively on each architecture and push them separately.
+
+4. **Buildx driver management**:
+
+   * `docker buildx use default` → single-arch docker driver
+   * `docker buildx use <builder>` → container driver (multi-arch)
+   * Must bootstrap the builder: `docker buildx inspect --bootstrap`
+
+5. **Swarm constraints**:
+
+   * You cannot “force” a multi-arch image to run on incompatible nodes.
+   * You can use **per-node constraints with `placement`** in your `docker-compose.yml` and deploy images specific to each architecture.
+
+### **Recommended Approaches**
+
+##### **Option A — Multi-arch image via Buildx + HTTPS registry**
+
+* Best for full automation; allows a single image to run on all nodes.
+* Requires registry to support HTTPS.
+
+Steps:
+
+1. Setup HTTPS registry:
+
+```bash
+mkdir -p ~/registry/certs ~/registry/data
+cd ~/registry/certs
+openssl req -newkey rsa:4096 -nodes -sha256 -keyout domain.key -x509 -days 365 -out domain.crt \
+    -subj "/CN=192.168.1.18"
+docker run -d --restart=always --name registry \
+  -p 5000:5000 \
+  -v ~/registry/data:/var/lib/registry \
+  -v ~/registry/certs:/certs \
+  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
+  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
+  registry:2
+```
+
+2. Trust self-signed certificate on all nodes:
+
+```bash
+sudo cp ~/registry/certs/domain.crt /usr/local/share/ca-certificates/registry.crt
+sudo update-ca-certificates
+sudo systemctl restart docker
+```
+
+3. Build multi-arch image and push:
+
+```bash
+docker buildx create --name mybuilder --driver docker-container --use
+docker buildx inspect --bootstrap
+
+docker buildx build --platform linux/amd64,linux/arm/v7 \
+  -t 192.168.1.18:5000/simple-rest-app:latest \
+  --push .
+```
+
+4. Deploy stack in Swarm without per-node hacks; Swarm automatically pulls the correct architecture.
+
+##### **Option B — Build separate images per node (simpler HTTP approach)**
+
+* Useful if you don’t want HTTPS yet.
+
+Steps:
+
+1. Build x86 image on manager:
+
+```bash
+docker build -t 192.168.1.18:5000/simple-rest-app:amd64 .
+docker push 192.168.1.18:5000/simple-rest-app:amd64
+```
+
+2. Build ARM image on Raspberry Pi:
+
+```bash
+docker build -t 192.168.1.18:5000/simple-rest-app:arm .
+docker push 192.168.1.18:5000/simple-rest-app:arm
+```
+
+3. Update `docker-compose.yml`:
+
+```yaml
+version: "3.9"
+services:
+  web-alfred:
+    image: 192.168.1.18:5000/simple-rest-app:amd64
+    deploy:
+      placement:
+        constraints: ["node.hostname == alfred"]
+
+  web-rpi1:
+    image: 192.168.1.18:5000/simple-rest-app:arm
+    deploy:
+      placement:
+        constraints: ["node.hostname == rpi1"]
+```
+
+4. Deploy stack:
+
+```bash
+docker stack deploy -c docker-compose.yml simple-rest-app
+```
+
+### **Supporting Scripts / Makefile Examples**
+
+##### **Makefile for Option B**
+
+```makefile
+.PHONY: build push deploy
+
+REGISTRY=192.168.1.18:5000
+IMAGE=simple-rest-app
+
+build-amd64:
+	docker build -t $(REGISTRY)/$(IMAGE):amd64 .
+
+push-amd64: build-amd64
+	docker push $(REGISTRY)/$(IMAGE):amd64
+
+build-arm:
+	# run on Raspberry Pi
+	docker build -t $(REGISTRY)/$(IMAGE):arm .
+
+push-arm: build-arm
+	docker push $(REGISTRY)/$(IMAGE):arm
+
+deploy:
+	docker stack deploy -c docker-compose.yml simple-rest-app
+```
+
+### **Practical Points**
+
+* **Always use the host IP instead of localhost** for the registry when multiple nodes need access.
+* **Swarm service placement constraints** are required if you have multiple architectures.
+* **Routing mesh** works, but only if containers are running on nodes. Multi-arch images must be compatible with node CPU.
+* **Multi-arch Buildx + HTTPS registry** is the future-proof solution for a single image supporting all nodes.
+
