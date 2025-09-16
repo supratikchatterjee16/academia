@@ -269,6 +269,48 @@
 **Implementation notes**
 
 * Design service contracts carefully, plan governance (SLAs), use API gateway + ESB judiciously, monitor service-level metrics.
+* BPMN or BPEL to control workflows across services
+* Layers are presentation(the app), Services(houses business logic), Parallely use BPMN/BPEL for workflows + ESB for inter-service messaging
+
+```text
+ ┌─────────────────────────────────────────────┐
+ │         Presentation / Consumer Layer       │
+ │   - Web apps, Mobile apps, Portals          │
+ │   - API Gateway (entry point)               │
+ └─────────────────────────────────────────────┘
+                       │
+                       ▼
+ ┌─────────────────────────────────────────────┐
+ │            Business Process Layer           │
+ │   - BPMN / BPEL Orchestration               │
+ │   - Service composition & workflows         │
+ │   - Business Rules Engines (e.g., Drools)   │
+ └─────────────────────────────────────────────┘
+                       │
+                       ▼
+ ┌─────────────────────────────────────────────┐
+ │              Service Layer                  │
+ │   - Business Services (SOAP/REST)           │
+ │   - Reusable, loosely coupled components    │
+ │   - Contracts defined via WSDL/OpenAPI      │
+ └─────────────────────────────────────────────┘
+                       │
+                       ▼
+ ┌─────────────────────────────────────────────┐
+ │          Integration Layer (ESB)            │
+ │   - Enterprise Service Bus                  │
+ │   - Service Registry / Repository           │
+ │   - Mediation: routing, transformation      │
+ │   - Adapters for legacy systems             │
+ └─────────────────────────────────────────────┘
+                       │
+                       ▼
+ ┌─────────────────────────────────────────────┐
+ │                Data Layer                   │
+ │   - RDBMS, NoSQL, Files, ERP, CRM, etc.     │
+ │   - Master Data Management (MDM)            │
+ └─────────────────────────────────────────────┘
+```
 
 ## 10 Microservices Architecture
 
@@ -904,7 +946,7 @@
 
 # Key comparisons
 
-## Microservicesvs SOA — differences & overlap
+## Microservices vs SOA
 
 **Similarities**
 
@@ -924,7 +966,19 @@
 * Enterprise integration across heterogeneous legacy systems → SOA may be appropriate.
 * New greenfield cloud-native app needing fast deliverability & independent scaling → Microservices.
 
-## Monolithvs Microservices
+### Comparison of a hypothetic Retail Website
+
+| Aspect                | SOA                                                                 | Microservices                                                                         |
+| --------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Service Size**      | Coarse-grained (e.g., `OrderService` does everything order-related) | Fine-grained (e.g., `CartService`, `CheckoutService`, `ShippingService` are separate) |
+| **Integration**       | Central ESB handles orchestration                                   | API Gateway + direct service-to-service (or event bus)                                |
+| **Data Management**   | Often shared enterprise DBs                                         | Database per service (polyglot persistence)                                           |
+| **Deployment**        | Services usually deployed together in large chunks                  | Services independently deployable                                                     |
+| **Workflow Handling** | Orchestration (centralized)                                         | Choreography (event-driven)                                                           |
+| **Focus**             | Reuse + integration across enterprise systems                       | Agility, scaling, cloud-native                                                        |
+
+
+## Monolith vs Microservices
 
 **Monolith advantages**
 
