@@ -528,3 +528,163 @@ v1 = Vector(1, 2)
 v2 = Vector(3, 4)
 print(v1 + v2)  # (4, 6)
 ```
+
+Great question — Python is actually a very **multi-paradigm language**, meaning you’re not restricted to just one programming style. You already mentioned **Aspect-Oriented**, **Object-Oriented**, and **Functional**, but Python comfortably supports several others as well. Let’s go through them:
+
+---
+
+## Supported Programming Paradigms
+
+### 1. **Imperative Programming**
+
+* **What it is:** Writing step-by-step instructions that change the program state.
+* **How Python supports it:** Basic loops, conditionals, assignments (`for`, `while`, `if`, etc.).
+* **Example:**
+
+  ```python
+  total = 0
+  for i in range(5):
+      total += i
+  print(total)
+  ```
+
+---
+
+### 2. **Procedural Programming**
+
+* **What it is:** A specialization of imperative programming, organizing code into reusable procedures (functions).
+* **How Python supports it:** Functions are first-class citizens.
+* **Example:**
+
+  ```python
+  def add(a, b):
+      return a + b
+
+  print(add(2, 3))
+  ```
+
+---
+
+### 3. **Object-Oriented Programming (OOP)**
+
+* **What it is:** Encapsulating data and behavior into classes and objects.
+* **How Python supports it:** Classes, inheritance, polymorphism, mixins, and even metaclasses.
+* **Example:**
+
+  ```python
+  class Animal:
+      def speak(self):
+          pass
+
+  class Dog(Animal):
+      def speak(self):
+          return "Woof!"
+  ```
+
+---
+
+### 4. **Functional Programming (FP)**
+
+* **What it is:** Treating computation as evaluation of pure functions, avoiding mutable state.
+* **How Python supports it:** `map`, `filter`, `reduce`, comprehensions, `lambda`, `functools`.
+* **Example:**
+
+  ```python
+  from functools import reduce
+  nums = [1, 2, 3, 4]
+  print(reduce(lambda x, y: x + y, nums))
+  ```
+
+---
+
+### 5. **Aspect-Oriented Programming (AOP)**
+
+* **What it is:** Separating cross-cutting concerns (logging, security, transactions).
+* **How Python supports it:** Not native, but achievable with decorators, metaprogramming, or libraries like `aspectlib`.
+* **Example (logging decorator):**
+
+  ```python
+  def log(func):
+      def wrapper(*args, **kwargs):
+          print(f"Calling {func.__name__}")
+          return func(*args, **kwargs)
+      return wrapper
+
+  @log
+  def greet(name):
+      return f"Hello, {name}!"
+  ```
+
+---
+
+### 6. **Declarative Programming**
+
+* **What it is:** Describing *what* the program should accomplish, not *how*.
+* **How Python supports it:** DSLs, SQLAlchemy for ORM, configuration via data structures.
+* **Example:**
+
+  ```python
+  from sqlalchemy import Table, Column, Integer, String, MetaData
+
+  metadata = MetaData()
+  users = Table("users", metadata,
+                Column("id", Integer, primary_key=True),
+                Column("name", String))
+  ```
+
+---
+
+### 7. **Metaprogramming**
+
+* **What it is:** Code that manipulates code (introspection, modifying classes/functions at runtime).
+* **How Python supports it:** `type()`, `metaclass`, `inspect`, decorators.
+* **Example:**
+
+  ```python
+  class Meta(type):
+      def __new__(cls, name, bases, dct):
+          dct["created_by"] = "Meta"
+          return super().__new__(cls, name, bases, dct)
+
+  class MyClass(metaclass=Meta):
+      pass
+
+  print(MyClass.created_by)
+  ```
+
+---
+
+### 8. **Event-Driven Programming**
+
+* **What it is:** Flow of the program is determined by events (UI actions, signals, async IO).
+* **How Python supports it:** `asyncio`, GUI frameworks (Tkinter, PyQt), network servers (Twisted).
+* **Example (asyncio):**
+
+  ```python
+  import asyncio
+
+  async def greet():
+      await asyncio.sleep(1)
+      print("Hello async!")
+
+  asyncio.run(greet())
+  ```
+
+---
+
+### 9. **Concurrent / Parallel Programming**
+
+* **What it is:** Multiple threads or processes working together.
+* **How Python supports it:** `threading`, `multiprocessing`, `asyncio`, `concurrent.futures`.
+* **Example:**
+
+  ```python
+  from concurrent.futures import ThreadPoolExecutor
+
+  def task(n):
+      return n * n
+
+  with ThreadPoolExecutor() as executor:
+      results = executor.map(task, [1, 2, 3])
+      print(list(results))
+  ```
