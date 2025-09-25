@@ -161,3 +161,125 @@ When a network partition failure happens, it must be decided whether to
 
 1. cancel the operation and thus decrease the availability but ensure consistency or to
 2. proceed with the operation and thus provide availability but risk inconsistency.
+
+## Types of Databases(by model/data structure) as of 2025
+
+## **1. Relational Model (Tables / Relations)**
+
+* **Data structure:** Tables (rows & columns).
+* **Examples:** PostgreSQL, MySQL, Oracle, SQL Server.
+* **Use case:** Transactional systems, structured data with relationships.
+
+---
+
+## **2. Key–Value Stores**
+
+* **Data structure:** Simple key → value pairs.
+* **Examples:** Redis, DynamoDB, Riak.
+* **Use case:** Caching, session storage, high-speed lookups.
+
+---
+
+## **3. Document Stores**
+
+* **Data structure:** Semi-structured JSON, BSON, or XML documents.
+* **Examples:** MongoDB, CouchDB, Cosmos DB.
+* **Use case:** Flexible schemas, hierarchical data, APIs.
+
+---
+
+## **4. Graph Databases**
+
+* **Data structure:** Nodes (entities) + Edges (relationships).
+* **Examples:** Neo4j, TigerGraph, JanusGraph.
+* **Use case:** Social networks, recommendation engines, fraud detection.
+
+---
+
+## **5. Wide-Column Stores**
+
+* **Data structure:** Tables with flexible columns grouped into families.
+* **Examples:** Apache Cassandra, HBase, ScyllaDB.
+* **Use case:** High write throughput, time-series, IoT.
+
+---
+
+## **6. Time-Series Databases**
+
+* **Data structure:** Optimized for timestamped data (series of measurements).
+* **Examples:** InfluxDB, TimescaleDB, QuestDB.
+* **Use case:** Monitoring, IoT, financial tick data.
+
+---
+
+## **7. Object-Oriented Databases**
+
+* **Data structure:** Directly store objects (similar to OOP languages).
+* **Examples:** db4o, ObjectDB, Versant.
+* **Use case:** Applications tightly coupled to object models.
+
+---
+
+## **8. Hierarchical Databases**
+
+* **Data structure:** Tree structures (parent-child).
+* **Examples:** IBM IMS, Windows Registry.
+* **Use case:** Legacy enterprise systems, configurations.
+
+---
+
+## **9. Network Databases**
+
+* **Data structure:** Records connected via explicit pointers (graph-like, but rigid).
+* **Examples:** IDMS, TurboIMAGE.
+* **Use case:** Legacy business apps.
+
+---
+
+## **10. Multimodel Databases**
+
+* **Data structure:** Support multiple models (document + graph + key-value + relational).
+* **Examples:** ArangoDB, OrientDB, Cosmos DB.
+* **Use case:** Flexibility when data varies in form.
+
+---
+
+## **11. Columnar Databases (Analytical)**
+
+* **Data structure:** Store data by columns instead of rows.
+* **Examples:** Apache Parquet (format), Vertica, ClickHouse, Snowflake.
+* **Use case:** Data warehousing, analytics, OLAP queries.
+
+---
+
+## **12. Spatial / Geospatial Databases**
+
+* **Data structure:** Optimized for geometric shapes & spatial indexes.
+* **Examples:** PostGIS, SpatiaLite, Oracle Spatial.
+* **Use case:** Maps, GIS systems, logistics.
+
+---
+
+## **13. Search-Oriented Databases**
+
+* **Data structure:** Inverted indexes for full-text search.
+* **Examples:** Elasticsearch, Solr, OpenSearch.
+* **Use case:** Search engines, log analysis.
+
+---
+
+## **14. Ledger / Blockchain Databases**
+
+* **Data structure:** Append-only, cryptographically verifiable chains of transactions.
+* **Examples:** BigchainDB, Amazon QLDB, Hyperledger Fabric.
+* **Use case:** Auditable systems, distributed trust.
+
+---
+
+## **15. New / Specialized Models**
+
+* **Vector Databases** (for embeddings, ML/AI search): Pinecone, Weaviate, Milvus.
+* **Array Databases** (for scientific/matrix data): SciDB, Rasdaman.
+* **Streaming Databases** (continuous event ingestion): Materialize, ksqlDB.
+* **Probabilistic Databases** (store uncertainty): BayesDB, MystiQ.
+* **In-Memory Databases** (RAM-optimized): SAP HANA, Memgraph.

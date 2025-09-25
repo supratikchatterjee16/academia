@@ -1,6 +1,244 @@
 # Artificial Intelligence
 
-Structure : 
+* **Artificial Intelligence (AI)**: systems that perform tasks that normally require human intelligence (problem solving, perception, language, planning).
+* **Machine Learning (ML)**: a subfield of AI where models learn patterns from data.
+* **Deep Learning (DL)**: ML using multi-layer neural networks (high-capacity, representation learning). Textbook-level coverage of DL fundamentals and backpropagation are standard (Goodfellow et al.).
+
+
+## Classifications (high-level)
+
+* **By approach**
+
+  * **Symbolic / Rule-based AI** (logic, knowledge bases)
+  * **Statistical / Probabilistic AI** (Bayesian methods, probabilistic graphical models)
+  * **Connectionist (Neural)** (neural networks, deep learning)
+* **By learning paradigm**
+
+  * **Supervised learning** — labeled data (classification, regression).
+  * **Unsupervised learning** — no labels (clustering, representation learning, density estimation).
+  * **Semi-supervised learning** — mix of labeled + unlabeled.
+  * **Self-supervised learning** — tasks built from inputs themselves (contrastive, masked-prediction).
+  * **Reinforcement learning (RL)** — learning via rewards and environment interaction.
+
+
+## General tasks / application areas
+
+* **Natural Language Processing (NLP)**: language modeling, translation, Q&A, summarization, sentiment, token classification. (Transformers are dominant.) 
+* **Computer Vision (CV)**: classification, detection (object detection), segmentation (semantic/instance), image generation (GANs, diffusion).
+* **Speech / Audio**: ASR (speech-to-text), TTS (text-to-speech), speaker identification.
+* **Reinforcement Learning / Control**: games, robotics, planning.
+* **Recommendation & Search**: ranking, retrieval, embeddings.
+* **Generative modeling**: GANs, VAEs, diffusion models (image/audio/text generation).
+
+
+## What is a neuron? (mathematics + named activation functions)
+
+A single neuron (in feedforward networks) computes a weighted sum of its inputs, applies a bias, then passes that through an **activation function**.
+
+Let input vector $x \in \mathbb{R}^n$, weights $w \in \mathbb{R}^n$, bias $b$. The neuron output:
+
+$$
+z = w^\top x + b,\qquad y = \phi(z)
+$$
+
+Common activation functions (with equations):
+
+* **Linear (identity)**: $\phi(z)=z$.
+* **Sigmoid (logistic)**: $\sigma(z) = \dfrac{1}{1+e^{-z}}$. Useful for binary probabilities; saturates for large |z|.  
+    <img src="sigmoid.png" alt="drawing" width="400"/>
+    <!-- ![Sigmoid](sigmoid.png) -->
+* **Tanh**: $\tanh(z)=\dfrac{e^{z}-e^{-z}}{e^{z}+e^{-z}}$, ranges $(-1,1)$.  
+    <img src="tanh.png" alt="drawing" width="400"/>
+    <!-- ![Tan H](tanh.png) -->
+* **ReLU** (Rectified Linear Unit): $\mathrm{ReLU}(z)=\max(0,z)$.  
+    <img src="ReLU.png" alt="drawing" width="400"/>
+    <!-- ![ReLU](ReLU.png) -->
+* **Leaky ReLU**: $\mathrm{LReLU}(z)=\max(\alpha z, z)$ (small $\alpha>0$).  
+    <img src="LReLU.png" alt="drawing" width="400"/>
+    <!-- ![LReLU](LReLU.png) -->
+* **Softmax** (multi-class output): for logits $z_i$,  
+    <img src="softmax.png" alt="drawing" width="400"/>
+    <!-- ![Softmax](softmax.png) -->
+
+  $$
+  \mathrm{softmax}(z)_i=\frac{e^{z_i}}{\sum_{j} e^{z_j}}.
+  $$
+
+  Softmax converts arbitrary logits into a probability distribution. 
+
+
+## Loss functions (named formulas)
+
+* **Mean Squared Error (MSE)** (regression):
+
+  $$
+  \mathcal{L}_{\text{MSE}}=\frac{1}{N}\sum_{i=1}^N (y_i-\hat y_i)^2.
+  $$
+* **Binary cross-entropy (log loss)** (binary classification; with target $t\in\{0,1\}$, predicted probability $\hat p$):
+
+  $$
+  \mathcal{L}_{\text{BCE}} = -\frac{1}{N}\sum_{i=1}^N \big[ t_i \log \hat p_i + (1-t_i)\log(1-\hat p_i)\big].
+  $$
+* **Categorical cross-entropy** (multi-class with one-hot $t$, probs $\hat p$):
+
+  $$
+  \mathcal{L}_{\text{CE}} = -\frac{1}{N}\sum_{i=1}^N \sum_{k} t_{i,k}\log \hat p_{i,k}.
+  $$
+
+  (Binary CE is a special case of categorical CE for 2 classes.) 
+* **Kullback–Leibler (KL) divergence** (compare distributions):
+
+  $$
+  D_{\text{KL}}(P\|Q)=\sum_x P(x)\log\frac{P(x)}{Q(x)}.
+  $$
+
+
+## Backpropagation & optimization — core equations
+
+**Gradient descent (batch):**
+
+$$
+\theta \leftarrow \theta - \eta \nabla_\theta \mathcal{L}(\theta),
+$$
+
+where $\eta$ = learning rate.
+
+**Stochastic Gradient Descent (per mini-batch)** uses same update but gradient estimated on batch.
+
+**Backpropagation**: use chain rule to compute $\frac{\partial \mathcal{L}}{\partial w}$. For a weight $w$ feeding into neuron with pre-activation $z$ and activation $\phi$:
+
+$$
+\frac{\partial \mathcal{L}}{\partial w} = \frac{\partial \mathcal{L}}{\partial y}\cdot \phi'(z)\cdot x,
+$$
+
+where $x$ is the input to that weight. (High-level chain rule; see Goodfellow for derivations.) 
+
+**Adam optimizer (named algorithm, Kingma & Ba)** — key equations per iteration $t$ (grad $g_t$):
+
+$$
+\begin{aligned}
+m_t &= \beta_1 m_{t-1} + (1-\beta_1) g_t,\\
+v_t &= \beta_2 v_{t-1} + (1-\beta_2) g_t^2,\\
+\hat m_t &= \frac{m_t}{1-\beta_1^t},\quad \hat v_t = \frac{v_t}{1-\beta_2^t},\\
+\theta_t &= \theta_{t-1} - \eta \frac{\hat m_t}{\sqrt{\hat v_t} + \epsilon}.
+\end{aligned}
+$$
+
+This is one of the most widely used adaptive optimizers. 
+
+(Also know: **SGD + momentum**, **RMSProp**, etc.)
+
+
+## Major types of neural networks (what they are, when used)
+
+* **MLP / Feedforward (Fully-connected)**: dense layers, universal function approximator (small/structured data).
+* **Convolutional Neural Networks (CNNs)**: local receptive fields, weight sharing — great for images, 2D signals (classification, detection, segmentation).
+* **Recurrent Neural Networks (RNNs)**: sequence models (suffer from vanishing gradients).
+
+  * **LSTM** (Long Short-Term Memory) and **GRU**: gating mechanisms to preserve/forget information across long sequences (Hochreiter & Schmidhuber for LSTM).
+* **Transformer**: uses self-attention; highly parallelizable and state-of-the-art in NLP and many other domains. Key attention formula (scaled dot-product attention):
+
+  $$
+  \mathrm{Attention}(Q,K,V)=\mathrm{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V,
+  $$
+
+  where $Q,K,V$ are query/key/value matrices and $d_k$ is key dimension. Transformers replaced recurrence in many sequence tasks. 
+* **Graph Neural Networks (GNNs)**: operate on graphs (node/edge features, message passing).
+* **Autoencoders (AE) and Variational AE (VAE)**: unsupervised representation learning; VAEs are probabilistic generative models.
+* **Generative Adversarial Networks (GANs)**: generator & discriminator in adversarial training (Goodfellow et al.).
+* **Diffusion Models**: denoise-from-noise generative models (recently became state-of-the-art for high-quality image generation). (See Ho et al., Sohl-Dickstein et al.) 
+
+
+## Model creation / training workflow (practical steps & best practices)
+
+1. **Define objective & collect data**
+
+   * Labeling strategy, dataset splits (train / val / test), distribution checks.
+2. **Data preprocessing & augmentation**
+
+   * Normalize/standardize inputs, tokenization for text, image augmentations (flip, crop), audio feature extraction.
+3. **Model architecture selection**
+
+   * Start small (baseline), increase capacity as needed. Consider transfer learning (pretrained backbones).
+4. **Loss function & metrics**
+
+   * Choose loss matching task (CE for classification, MSE for regression). Decide metrics (accuracy, precision/recall/F1, AUC, BLEU, perplexity).
+5. **Optimizer & learning-rate schedule**
+
+   * Choose optimizer (Adam common); use LR schedules (step, cosine, warmup). Learning-rate is often the most sensitive hyperparameter.
+6. **Regularization**
+
+   * Weight decay (L2), dropout, early stopping, data augmentation, batch norm.
+7. **Monitoring & validation**
+
+   * Track train/val loss/metrics. Use held-out test set only for final evaluation.
+8. **Hyperparameter tuning**
+
+   * Grid search / random search / Bayesian (Optuna), and practical budgets. Use cross-validation if dataset small.
+9. **Model compression & deployment**
+
+   * Quantization, pruning, distillation, converting to inference format (ONNX, TorchScript, TFLite, Core ML). See section 10. 
+
+
+## Important evaluation metrics (named)
+
+* **Accuracy**: $\frac{\text{correct}}{\text{total}}$ (not reliable for imbalanced sets).
+* **Precision / Recall / F1**:
+
+  $$
+  \text{Precision}=\frac{TP}{TP+FP},\quad \text{Recall}=\frac{TP}{TP+FN},\quad F1=2\cdot\frac{\text{P}\cdot\text{R}}{\text{P}+\text{R}}.
+  $$
+* **ROC AUC**: area under ROC curve (sensitivity vs 1-specificity).
+* **BLEU** (NLP translation quality), **ROUGE** (summarization), **Perplexity** (language models).
+* **mAP** (mean Average Precision) for object detection.
+
+
+## Model formats & deployment (common formats, when to use them)
+
+* **PyTorch checkpoint (.pt / .pth)** — native PyTorch state_dict or full model. Can be exported to **TorchScript** for C++/mobile inference. (.pt and .pth are basically conventions; both used). 
+* **TensorFlow SavedModel** — canonical TensorFlow serialized model (directory with `saved_model.pb` + variables); used for TF Serving and conversions. 
+* **ONNX (Open Neural Network Exchange)** — open graph format to move models between frameworks and runtimes (good for deployment and optimizations). 
+* **TFLite** — TensorFlow Lite for mobile/embedded, supports post-training quantization and conversion from SavedModel. **Quantization** reduces model size/latency (8-bit, etc.). 
+* **Core ML** — Apple’s format for iOS deployment.
+* **OpenVINO, TensorRT** — vendor/runtime specific optimizers for Intel/NVIDIA hardware.
+* **Model compression techniques**
+
+  * **Quantization**: reduce numeric precision (e.g. float32→int8). Can be post-training or quantization-aware training. 
+  * **Pruning**: remove weights/filters with small contribution.
+  * **Knowledge distillation**: train a smaller “student” to match a large “teacher”.
+  * **Operator fusion / graph optimizations** (runtime dependent).
+
+
+## Short list of foundational / reference papers & docs (for further reading)
+
+* **“Attention Is All You Need” — Vaswani et al., 2017** (Transformer, attention equation). 
+* **“Adam: A Method for Stochastic Optimization” — Kingma & Ba (2014/2015)** (Adam equations). 
+* **Deep Learning (Goodfellow, Bengio, Courville)** — textbook (backpropagation, convnets, theory). 
+* **ONNX specification & docs** — for model interchange. 
+* **TensorFlow SavedModel / TFLite docs** — for TensorFlow model export & quantization. 
+
+
+## Useful mathematical reminders / cheat-sheet (key equations collected)
+
+* **Neuron forward**: $z=w^\top x + b,\quad y=\phi(z)$.
+* **Softmax**: $\mathrm{softmax}(z)_i=\dfrac{e^{z_i}}{\sum_j e^{z_j}}$.
+* **Cross-entropy (categorical)**: $\mathcal{L}=-\sum_k t_k \log \hat p_k$.
+* **Gradient descent update**: $\theta\leftarrow\theta-\eta\nabla_\theta\mathcal{L}$.
+* **Adam**: $m_t=\beta_1 m_{t-1}+(1-\beta_1)g_t,\ v_t=\beta_2 v_{t-1}+(1-\beta_2)g_t^2,$ with bias-corrected $\hat m_t,\hat v_t$ and $\theta\leftarrow\theta-\eta\frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon}$. 
+* **Scaled dot-product attention**: $\mathrm{softmax}(QK^\top/\sqrt{d_k})V.$ 
+
+
+## Cross-check / “what I verified” (short)
+
+I verified and drew from:
+
+* Transformer (attention formula & claims about architecture) — Vaswani et al. (2017). 
+* Adam optimizer equations (Kingma & Ba). 
+* Softmax & cross-entropy standard forms. 
+* ONNX and TensorFlow SavedModel / TFLite docs for model format practices and quantization (deployment & compression). 
+
+
+Structure :
 
 1. Approaches to AI: Turing Test and Rational Agent Approaches; State Space Representation of Problems, Heuristic Search Techniques, Game Playing, Min-Max Search, Alpha Beta Cutoff Procedures.
 2. Knowledge Representation: Logic, Semantic Networks, Frames, Rules, Scripts, Conceptual Dependency and Ontologies; Expert Systems, Handling Uncertainty in Knowledge. 
