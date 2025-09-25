@@ -45,19 +45,19 @@ Common activation functions (with equations):
 
 * **Linear (identity)**: $\phi(z)=z$.
 * **Sigmoid (logistic)**: $\sigma(z) = \dfrac{1}{1+e^{-z}}$. Useful for binary probabilities; saturates for large |z|.  
-    <img src="sigmoid.png" alt="drawing" width="400"/>
+    <img src="./sigmoid.png" alt="drawing" width="400"/>
     <!-- ![Sigmoid](sigmoid.png) -->
 * **Tanh**: $\tanh(z)=\dfrac{e^{z}-e^{-z}}{e^{z}+e^{-z}}$, ranges $(-1,1)$.  
-    <img src="tanh.png" alt="drawing" width="400"/>
+    <img src="./tanh.png" alt="drawing" width="400"/>
     <!-- ![Tan H](tanh.png) -->
 * **ReLU** (Rectified Linear Unit): $\mathrm{ReLU}(z)=\max(0,z)$.  
-    <img src="ReLU.png" alt="drawing" width="400"/>
+    <img src="./ReLU.png" alt="drawing" width="400"/>
     <!-- ![ReLU](ReLU.png) -->
 * **Leaky ReLU**: $\mathrm{LReLU}(z)=\max(\alpha z, z)$ (small $\alpha>0$).  
-    <img src="LReLU.png" alt="drawing" width="400"/>
+    <img src="./LReLU.png" alt="drawing" width="400"/>
     <!-- ![LReLU](LReLU.png) -->
 * **Softmax** (multi-class output): for logits $z_i$,  
-    <img src="softmax.png" alt="drawing" width="400"/>
+    <img src="./softmax.png" alt="drawing" width="400"/>
     <!-- ![Softmax](softmax.png) -->
 
   $$
