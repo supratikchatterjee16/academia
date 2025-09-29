@@ -32,7 +32,7 @@
 * **Use case:** Scientific computing (SciPy, pandas, scikit-learn use it heavily).
 * **Example:**
 
-  ```cython
+  ```python
   def add(int a, int b):
       return a + b
   ```

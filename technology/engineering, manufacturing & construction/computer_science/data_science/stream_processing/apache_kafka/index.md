@@ -27,7 +27,7 @@ Apache Kafka is a distributed publish-subscribe messaging system used for collec
 2. Topics
 3. Brokers
 4. Consumers
-5. Consummer Groups
+5. Consumer Groups
 6. Controller
 7. Zookeeper
 8. Streams
@@ -38,7 +38,7 @@ Producers are systems that publish data or messages to the brokers.
 
 ### Topics
 
-These are channels to which publishers can publish data too, and consuers can subscribe to, in order to receive data from.
+These are channels to which publishers can publish data to, and consumers can subscribe to, in order to receive data from.
 
 It is a structured commit log.
 These can have partitions. Partitioning helps scale the listener.
@@ -51,7 +51,7 @@ Topic Replication Factor is a factor that describes the redundancy of data in to
 
 ### Brokers
 
-Individual Nodes that host the information published by the publishers. When data  is being published, one 1 broker can be a leader. There is a leader for each topic. The other brokers, have in-sync replicas. Tese replicas can also be a **follower** which is tasked with becoming he leader, if the current leader fails.
+Individual Nodes that host the information published by the publishers. When data  is being published, one 1 broker can be a leader. There is a leader for each topic. The other brokers, have in-sync replicas. These replicas can also be a **follower** which is tasked with becoming he leader, if the current leader fails.
 
 
 ### Consumers

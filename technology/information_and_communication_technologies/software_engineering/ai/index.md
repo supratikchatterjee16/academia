@@ -46,19 +46,19 @@ Common activation functions (with equations):
 * **Linear (identity)**: $\phi(z)=z$.
 * **Sigmoid (logistic)**: $\sigma(z) = \dfrac{1}{1+e^{-z}}$. Useful for binary probabilities; saturates for large |z|.  
     <img src="./sigmoid.png" alt="drawing" width="400"/>
-    <!-- ![Sigmoid](sigmoid.png) -->
+    
 * **Tanh**: $\tanh(z)=\dfrac{e^{z}-e^{-z}}{e^{z}+e^{-z}}$, ranges $(-1,1)$.  
     <img src="./tanh.png" alt="drawing" width="400"/>
-    <!-- ![Tan H](tanh.png) -->
+    
 * **ReLU** (Rectified Linear Unit): $\mathrm{ReLU}(z)=\max(0,z)$.  
     <img src="./ReLU.png" alt="drawing" width="400"/>
-    <!-- ![ReLU](ReLU.png) -->
+    
 * **Leaky ReLU**: $\mathrm{LReLU}(z)=\max(\alpha z, z)$ (small $\alpha>0$).  
     <img src="./LReLU.png" alt="drawing" width="400"/>
-    <!-- ![LReLU](LReLU.png) -->
+    
 * **Softmax** (multi-class output): for logits $z_i$,  
     <img src="./softmax.png" alt="drawing" width="400"/>
-    <!-- ![Softmax](softmax.png) -->
+    
 
   $$
   \mathrm{softmax}(z)_i=\frac{e^{z_i}}{\sum_{j} e^{z_j}}.
@@ -67,31 +67,122 @@ Common activation functions (with equations):
   Softmax converts arbitrary logits into a probability distribution. 
 
 
-## Loss functions (named formulas)
 
-* **Mean Squared Error (MSE)** (regression):
+## **Loss Functions (a.k.a. Cost / Objective functions)**
+
+A **loss function** is a mathematical measure of how well (or poorly) a machine learning model is performing on a given task.
+
+* It **quantifies the difference** between the model’s prediction ($\hat{y}$) and the true target value ($y$).
+* During training, the model adjusts its parameters ($\theta$) to **minimize the loss**.
+* The “optimization” process (via gradient descent or Adam, etc.) relies on the loss to compute parameter updates.
+
+---
+
+### **1. Why are they important?**
+
+* Define **what “good performance” means** for the task.
+* Guide the optimization process (the gradients come from the loss).
+* Different tasks need different loss functions (classification ≠ regression ≠ generative).
+
+---
+
+### **2. Common Loss Functions (with equations)**
+
+#### **Regression Losses**
+
+1. **Mean Squared Error (MSE)**
+
+   $$
+   \mathcal{L}_{\text{MSE}} = \frac{1}{N}\sum_{i=1}^N (y_i - \hat{y}_i)^2
+   $$
+
+   Penalizes large errors more (quadratic).
+
+2. **Mean Absolute Error (MAE)**
+
+   $$
+   \mathcal{L}_{\text{MAE}} = \frac{1}{N}\sum_{i=1}^N |y_i - \hat{y}_i|
+   $$
+
+   More robust to outliers than MSE.
+
+---
+
+#### **Classification Losses**
+
+1. **Binary Cross-Entropy (Log Loss)**
+   For binary labels $t \in \{0,1\}$ and predicted probability $\hat{p}$:
+
+   $$
+   \mathcal{L}_{\text{BCE}} = -\frac{1}{N}\sum_{i=1}^N \Big[t_i \log(\hat{p}_i) + (1-t_i)\log(1-\hat{p}_i)\Big]
+   $$
+
+2. **Categorical Cross-Entropy** (for multi-class, with one-hot targets $t_{i,k}$):
+
+   $$
+   \mathcal{L}_{\text{CE}} = -\frac{1}{N}\sum_{i=1}^N \sum_{k=1}^K t_{i,k} \log(\hat{p}_{i,k})
+   $$
+
+   Works together with **Softmax** to model probabilities.
+
+3. **Hinge Loss** (used in SVMs):
+
+   $$
+   \mathcal{L}_{\text{hinge}} = \frac{1}{N}\sum_{i=1}^N \max(0, 1 - y_i \cdot \hat{y}_i)
+   $$
+
+   Encourages correct classification with a margin.
+
+---
+
+#### **Probabilistic & Generative Losses**
+
+1. **Kullback–Leibler (KL) Divergence**
+   Measures difference between two probability distributions $P$ and $Q$:
+
+   $$
+   D_{\text{KL}}(P \parallel Q) = \sum_x P(x) \log \frac{P(x)}{Q(x)}
+   $$
+
+   (Used in Variational Autoencoders, language modeling, etc.)
+
+2. **Wasserstein Loss** (Wasserstein distance, used in WGANs):
+   Provides a smoother distance metric between real and generated distributions.
+
+3. **Negative Log-Likelihood (NLL)**
+
+   $$
+   \mathcal{L}_{\text{NLL}} = - \sum_{i=1}^N \log p(y_i \mid x_i;\theta)
+   $$
+
+   A general loss form (e.g., for probabilistic models).
+
+---
+
+#### **Reinforcement Learning Losses**
+
+* **Policy Gradient Loss** (REINFORCE):
 
   $$
-  \mathcal{L}_{\text{MSE}}=\frac{1}{N}\sum_{i=1}^N (y_i-\hat y_i)^2.
-  $$
-* **Binary cross-entropy (log loss)** (binary classification; with target $t\in\{0,1\}$, predicted probability $\hat p$):
-
-  $$
-  \mathcal{L}_{\text{BCE}} = -\frac{1}{N}\sum_{i=1}^N \big[ t_i \log \hat p_i + (1-t_i)\log(1-\hat p_i)\big].
-  $$
-* **Categorical cross-entropy** (multi-class with one-hot $t$, probs $\hat p$):
-
-  $$
-  \mathcal{L}_{\text{CE}} = -\frac{1}{N}\sum_{i=1}^N \sum_{k} t_{i,k}\log \hat p_{i,k}.
+  \nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta} \big[ \nabla_\theta \log \pi_\theta(a \mid s) R \big]
   $$
 
-  (Binary CE is a special case of categorical CE for 2 classes.) 
-* **Kullback–Leibler (KL) divergence** (compare distributions):
+  (Optimizes expected reward).
+
+* **Temporal Difference (TD) Loss** (for value functions):
 
   $$
-  D_{\text{KL}}(P\|Q)=\sum_x P(x)\log\frac{P(x)}{Q(x)}.
+  \mathcal{L}_{\text{TD}} = \big(r + \gamma V(s') - V(s)\big)^2
   $$
 
+---
+
+### **3. Choosing the Right Loss**
+
+* **Regression** → MSE / MAE.
+* **Classification** → Cross-entropy.
+* **Generative modeling** → KL, Wasserstein, NLL.
+* **Reinforcement learning** → Policy gradient / TD error.
 
 ## Backpropagation & optimization — core equations
 
