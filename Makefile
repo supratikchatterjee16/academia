@@ -19,7 +19,5 @@ deploy: commit
 	fi
 	cd .parent; \
 	git submodule update --recursive --remote; \
-	echo "Enter a commit message for parent: "; \
-	read pmsg; \
-	git commit -am "$$pmsg"; \
+	git commit -am "Submodule update"; \
 	git push origin master
