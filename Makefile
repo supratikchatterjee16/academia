@@ -16,6 +16,8 @@ deploy: commit
 	else \
 		echo "Cloning parent..."; \
 		git clone $(PARENT_REPO) .parent; \
+		cd .parent; \
+		git submodule update --init --recursive; \
 	fi
 	cd .parent; \
 	git submodule update --recursive --remote; \
