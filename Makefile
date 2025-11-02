@@ -7,7 +7,7 @@ commit:
 	read msg; \
 	git add .; \
 	git commit -m "$$msg"; \
-	git push origin master; \
+	git push origin master
 
 deploy: commit
 	@if [ -d .parent/.git ]; then \
@@ -23,4 +23,4 @@ deploy: commit
 	echo "Enter a commit message for parent: "; \
 	read pmsg; \
 	git commit -m "$$pmsg"; \
-	git push origin master;
+	git push origin master
