@@ -8,8 +8,6 @@ commit:
 	git add .; \
 	git commit -m "$$msg"; \
 	git push origin master; \
-	-mkdir .parent; \
-	cd .parent; \
 
 deploy: commit
 	@if [ -d .parent/.git ]; then \
