@@ -1,21 +1,17 @@
 # Data Visualization
 
-Color Theory
-
-Shape is less powerful than color.
+> Color Theory: Shape is less powerful than color.
 
 Edward Tufte principles :
 1. Chartjunk
+    * Reduce junk in a graph
+
 2. Data-ink/Data-ink ratio
+    * A large share of ink on a graphic should present data-information, the ink changing as the data change. 
+    * Data-ink is the non-erasable core of graphic, the non-redundant ink arranged in response to variations in the number represented.
+    * Data-ink ratio : Data-ink/Total-ink used to print the graphic.
+    
 3. Importance of Substance over design
-
-## Chartjunk
-reduce junk in a graph
-
-## Data-ink
-A large share of ink on a graphic should present data-information, the ink changing as the data change. Data-ink is the non-erasable core of graphic, the non-redundant ink arranged in response to variations in the number represented.
-
-Data-ink ratio : Data-ink/Total-ink used to print the graphic.
 
 ## 8 Gestalt principles
 

@@ -2,9 +2,11 @@
 
 Data science is the science of analysing and extracting information from large sets of data, which typically combines elements of statistics, maths, computing, and other subjects.
 
+It is an interdisciplinary field focused on extracting knowledge and insights from structured and unstructured data using scientific methods, processes, algorithms, and systems. It integrates elements from statistics, computer science, mathematics, and domain expertise to support decision-making, predictions, and automation.
+
 This topic, due to the broad nature of it, comprises of topics containing elements of Information and Communication TEchnology and Mathematics and Statistics. The topics covered in the section here are:
 
-- Data Extraction
+- Data Extraction/Mining
 - Data Cleaning & Pre-processing
 - Data Loading & Storage
 - Data Visualization
@@ -103,7 +105,7 @@ Data Science follows a common process in industries, and as such, it is recommen
 
 Each of the sections will be expanded upon in their own subsequent sections.
 
-## Datasets to practise data science methods
+## **Datasets to practise data science methods**
 
 - [NYC Taxi & Limousine Commision(requires PARQUET*)](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 - [IMDB Movies Dataset(TSV format)](https://datasets.imdbws.com/)
@@ -121,3 +123,10 @@ Each of the sections will be expanded upon in their own subsequent sections.
 - [M5 Forecasting Dataset(Retail)](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)
 
 *Apache PARQUET is a columnar DB store to be used with the Apache Hadoop ecosystem, Pandas can be used to read this dataset
+
+## **Programming & Software Tools**
+
+* **Languages**: Python, R (sometimes SQL, Scala, Julia)
+* **Libraries**: pandas, NumPy, scikit-learn, TensorFlow, PyTorch, matplotlib/seaborn
+* **Version control**: Git
+* **Development tools**: Jupyter Notebooks, VS Code
