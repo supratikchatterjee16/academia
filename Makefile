@@ -18,9 +18,8 @@ deploy: commit
 		git clone $(PARENT_REPO) .parent; \
 	fi
 	cd .parent; \
-	git submodule update --remote --merge; \
-	git add .; \
+	git submodule update --recursive --remote; \
 	echo "Enter a commit message for parent: "; \
 	read pmsg; \
-	git commit -m "$$pmsg"; \
+	git commit -am "$$pmsg"; \
 	git push origin master
