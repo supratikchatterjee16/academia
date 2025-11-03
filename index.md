@@ -10,6 +10,9 @@ hero:
     - theme: brand
       text: Get Started
       link: /README.md
+    - theme: alt
+      text: Contribute
+      link: https://github.com/supratikchatterjee16/academia
 
 features:
   - title: Structured Industry relevant notes
