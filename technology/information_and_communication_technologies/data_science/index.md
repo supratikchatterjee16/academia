@@ -6,10 +6,11 @@ It is an interdisciplinary field focused on extracting knowledge and insights fr
 
 This topic, due to the broad nature of it, comprises of topics containing elements of Information and Communication TEchnology and Mathematics and Statistics. The topics covered in the section here are:
 
-- Data Extraction/Mining
-- Data Cleaning & Pre-processing
-- Data Loading & Storage
-- Data Visualization
+- [Problem Definition](./problem_definition.md)
+- [Data Extraction/Mining](./data_mining/index.md)
+- [Data Cleaning & Pre-processing](./data_cleaning_and_preprocessing/index.md)
+- [Data Loading & Storage](./data_loading_and_storage/index.md)
+- [Data Visualization](./data_visualization/index.md)
 
 The following topics will be classified under statistics:
 
