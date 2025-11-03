@@ -12,11 +12,11 @@ This topic, due to the broad nature of it, comprises of topics containing elemen
 - [Data Loading & Storage](./data_loading_and_storage/index.md)
 - [Data Visualization](./data_visualization/index.md)
 
-The following topics will be classified under statistics:
+The following topics will be discussed under statistics:
 
-- [Statistical Analysis](/technology/statistics/data_analysis/index.md)
+- [Statistical Analysis](/technology/statistics/statistical_analysis/index.md)
 - [Predictive Modelling](/technology/statistics/statistical_modelling/index.md)
-- [Experimentation and testing](/technology/statistics/data_analysis/index.md)
+- [Experimentation and testing](/technology/statistics/statistical_testing/index.md)
 
 Data Science follows a common process in industries, and as such, it is recommended to use the same, for preparing workloads of this domain:
 
