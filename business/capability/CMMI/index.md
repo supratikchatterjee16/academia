@@ -4,12 +4,12 @@
 
 CMMI is about collecting the characterisitics of affective processes, ad then using this information to provide guidance for improving an organization's processes. The end goal is to make it easier for an organization to develop products or solutions by improving it's ability to manage development, acquisition, and maintenance of it's product or services.
 
-CMMI is a model; it tells us what to do, but not how to do it.It is a concept we nee to apply to the oganization to get mture from a process perspective.
+CMMI is a model; it tells us what to do, but not how to do it. It is a concept we need to apply to the oganization to get mture from a process perspective.
 
 > The Capability Maturity Model Integration (CMMI) is a capability improvement model that can be adapted to solve any performance issue at any level of the organization in any industry. The Model provides guidelines and recommendations for helping your organization diagnose problems and improve performance. Used by over 5000 organizations in more than 70 countries all over the world, CMMI helps you identify and achieve measurable business goals. - CMMI Institute
 
 CMMI currently addresses three important areas of interest:
-- Product and Service deelopmen - CMMI for Development(CMMI-DEV)    
+- Product and Service deelopment - CMMI for Development(CMMI-DEV)    
 - Service Establishment, management - CMMI for Services(CMMI-SVC)
 - Product and service acquisition - CMI for Acquisition(CMMI-ACQ)
 
@@ -26,7 +26,7 @@ The term maturity refers to improving our process on a continual basis, in the c
 
 Developed by Humphrey and Software Engineering Institute, at the request of DoD and USAF.
 
-## CMMI Is Used for Process Improvement
+## CMMI is Used for Process Improvement
 
 To cater to comprehensive business process improvements, CMMI features 25 different process areas. Each process area is composed of two kinds of goals (generic goal and specific goal) and two kinds of practices. There is also a lot of information for helping management to develop strategies.
 
@@ -109,7 +109,8 @@ Process management (five total process areas)
 - Organizational process performance (OPP)
 - Organizational training (OT)
 
-Note	
+**Note:** 
+
 All of the process management process areas start with Organizational.
 
 Support (five total process areas)

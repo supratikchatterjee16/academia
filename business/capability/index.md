@@ -1,4 +1,4 @@
-# Capabilities in Businesses
+# Capabilities
 
 **Business capabilities** are the core abilities or capacities that an organization needs to **achieve its objectives**, **deliver value**, and **operate effectively**.
 

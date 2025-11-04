@@ -1,6 +1,5 @@
 # BA Compentencies
 
-
 ## Relationship Building and Management Skills
 
 1. Co-Creating : Working together to work towards a goal
