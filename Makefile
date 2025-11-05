@@ -3,7 +3,8 @@
 PARENT_REPO = https://github.com/supratikchatterjee16/academia-frontend.git
 
 commit:
-	@echo "Enter a commit message: "; \
+	git status
+	@echo "\n\n\033[1mEnter a commit message for changes(description of changes done):\033[0m"; \
 	read msg; \
 	git add .; \
 	git commit -m "$$msg"; \
