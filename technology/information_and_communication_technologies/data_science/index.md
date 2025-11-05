@@ -106,7 +106,7 @@ Data Science follows a common process in industries, and as such, it is recommen
 
 Each of the sections will be expanded upon in their own subsequent sections.
 
-## **Datasets to practise data science methods**
+## **Datasets to practice data science methods**
 
 - [NYC Taxi & Limousine Commision(requires PARQUET*)](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 - [IMDB Movies Dataset(TSV format)](https://datasets.imdbws.com/)
@@ -124,6 +124,89 @@ Each of the sections will be expanded upon in their own subsequent sections.
 - [M5 Forecasting Dataset(Retail)](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data)
 
 *Apache PARQUET is a columnar DB store to be used with the Apache Hadoop ecosystem, Pandas can be used to read this dataset
+
+## **APIs to practice on**
+
+### **Finance & Economics**
+
+| API                                          | Data Provided                                | Notes                                         |
+| -------------------------------------------- | -------------------------------------------- | --------------------------------------------- |
+| **Yahoo Finance API (via yfinance library)** | Stocks, ETFs, currencies                     | Free, no API key required if using `yfinance` |
+| **Alpha Vantage**                            | Real-time + historical stocks, crypto, forex | Free tier with rate limits (5 calls/min)      |
+| **FRED (Federal Reserve)**                   | Macroeconomic indicators (GDP, CPI, rates)   | Fully free, requires simple key               |
+| **Finnhub.io**                               | Stocks, sentiment analysis, crypto           | Generous free tier                            |
+
+---
+
+### **Weather / Environment**
+
+| API                       | Data Provided                  | Notes                                               |
+| ------------------------- | ------------------------------ | --------------------------------------------------- |
+| **OpenWeatherMap**        | Weather forecasts & history    | Free tier w/ API key; limited calls/day             |
+| **NOAA Climate Data API** | Historical climate and weather | Fully free, but some datasets require request forms |
+| **AirNow API**            | Air quality index (AQI) data   | Free registration                                   |
+
+---
+
+### **Maps / Geospatial / Places**
+
+| API                     | Data Provided                        | Notes                          |
+| ----------------------- | ------------------------------------ | ------------------------------ |
+| **OpenStreetMap (OSM)** | Roads, buildings, geodata            | Free, use through Overpass API |
+| **GeoNames API**        | Geographic names & location metadata | Free with registration         |
+| **USGS Earthquake API** | Global earthquake data in real time  | No key required                |
+
+---
+
+### **Open Government / Demographics**
+
+| API                          | Data Provided                    | Notes                                      |
+| ---------------------------- | -------------------------------- | ------------------------------------------ |
+| **U.S. Census API**          | Demographic & socioeconomic data | Free, requires registration                |
+| **UN Data API**              | Population, development stats    | Mostly open datasets downloadable via JSON |
+| **World Bank Open Data API** | Global development indicators    | Completely free, no key required           |
+
+---
+
+### **Social Media / Text / NLP**
+
+| API                          | Data Provided                    | Notes                           |
+| ---------------------------- | -------------------------------- | ------------------------------- |
+| **Reddit API**               | Posts & comments                 | Requires a free API key         |
+| **Wikipedia API**            | Articles, summaries, pageviews   | No key required                 |
+| **NewsAPI**                  | News headlines & metadata        | Free tier limited, no full text |
+| **HuggingFace Datasets API** | NLP datasets programmatic access | Fully free                      |
+
+---
+
+### **Health / Science / Research**
+
+| API                        | Data Provided             | Notes                           |
+| -------------------------- | ------------------------- | ------------------------------- |
+| **PubMed Entrez API**      | Scientific paper metadata | No key needed (but recommended) |
+| **OpenFDA**                | Drug & adverse event data | Completely free                 |
+| **ClinicalTrials.gov API** | Medical trial data        | Open and unrestricted           |
+
+---
+
+### **E-Commerce / Products**
+
+| API                   | Data Provided                          | Notes                       |
+| --------------------- | -------------------------------------- | --------------------------- |
+| **OpenFoodFacts API** | Ingredients, nutrition labels          | Great for classification/ML |
+| **Fake Store API**    | Product + cart data for mock ecommerce | Good for beginner ML demos  |
+
+---
+
+### **Fun & Miscellaneous**
+
+| API                       | Data Provided                  | Notes                   |
+| ------------------------- | ------------------------------ | ----------------------- |
+| **PokéAPI**               | Pokémon stats                  | Fully free & fun to use |
+| **Star Wars API (SWAPI)** | Characters, planets, starships | No key needed           |
+| **Open Trivia Database**  | Trivia Q&A                     | No key required         |
+
+---
 
 ## **Programming & Software Tools**
 
