@@ -6,6 +6,7 @@ commit:
 	git status
 	@echo "\n\n\033[1mEnter a commit message for changes(description of changes done):\033[0m"; \
 	read msg; \
+	@echo "\n\n" \
 	git add .; \
 	git commit -m "$$msg"; \
 	git push origin master

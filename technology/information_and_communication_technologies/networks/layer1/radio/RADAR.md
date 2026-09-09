@@ -9,6 +9,8 @@ RADAR is a method of using a radio to detect and find the distance to objects.
 2. Continuous Wave RADAR
     - cannot range
     - can find velocity
+    - types are sawtooth (for range), triangular (for range and velocity ambiguity resolution), sinusoidal, and stepped-frequency modulation
+
 
 
 ## RADAR equations
