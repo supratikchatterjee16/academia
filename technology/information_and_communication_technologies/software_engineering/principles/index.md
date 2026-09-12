@@ -23,3 +23,4 @@ Acronym for :
 7. Pure Fabrication : When we have operations that do not belong to any particular object, we create a "fake" class, in order to separate the logic.
 8. Indirection : Create intermediary between classes to reduce direct coupling. 
 9. Protected Variations : Reduce impact of changes of some object on others, by making use of interfaces.
+
