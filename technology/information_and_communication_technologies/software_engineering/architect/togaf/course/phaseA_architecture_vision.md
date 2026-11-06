@@ -79,3 +79,6 @@ Contains:
 - Information(Eg: Needs, key messages for the vision, risks, success factors)
 - Mechanisms(Eg: Meetings, newsletters, repositories)
 - Timetable(Eg: Stakeholder <> time <> location)
+
+## Business Scenarios
+

@@ -232,3 +232,39 @@ Here’s a tweaked version that doesn’t rely on bitters:
 * Vanilla + citrus oils add sophistication without requiring bitters.
 * Feels like a proper cocktail, but uses only pantry-friendly ingredients.
 
+## **Jade Elixir**
+
+An elegant blend of Camikara Rum, chilled green tea, honey water, and fresh lemon.
+
+Ingredients:
+
+1. Chilled Green Tea(60ml and made strong - 1 tea bag per half cup water)
+2. Honey Water(30ml/45ml based on sweetness preferred)
+3. Fresh lemon juice(squeeze half a lemon)
+4. Camikara Rum(60 ml)
+5. Ice
+
+Serve in a rocks glass with frosting.
+
+## **Iconiq Velvet**
+
+A silky blend of whisky, golden honey, and bright citrus, elevated by a delicate hint of ginger for a warm, velvety finish.
+
+Ingredients:
+
+1. Iconiq White Whisky: 90 ml
+2. Fresh Orange Juice: 90 ml
+3. Honey Water(1:1 honey + water): to taste
+4. Ginger Ale: to fill
+5. Ice
+
+Serve in a wheat or highball glass, with a rind of orange.
+
+## **The Wiseman's Coffee**
+
+1. Old Monk - 90ml
+2. Coffee - Nestle Classic Coffee 1 satchet
+3. Stevia - 2 small spoons
+4. Curacao Bleu - 2 drops
+5. Salt - just a pinch
+6. Ice & Water as required
