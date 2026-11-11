@@ -129,12 +129,13 @@ Each of the sections will be expanded upon in their own subsequent sections.
 
 ### **Finance & Economics**
 
-| API                                          | Data Provided                                | Notes                                         |
-| -------------------------------------------- | -------------------------------------------- | --------------------------------------------- |
-| **Yahoo Finance API (via yfinance library)** | Stocks, ETFs, currencies                     | Free, no API key required if using `yfinance` |
-| **Alpha Vantage**                            | Real-time + historical stocks, crypto, forex | Free tier with rate limits (5 calls/min)      |
-| **FRED (Federal Reserve)**                   | Macroeconomic indicators (GDP, CPI, rates)   | Fully free, requires simple key               |
-| **Finnhub.io**                               | Stocks, sentiment analysis, crypto           | Generous free tier                            |
+| API | Data Provided | Notes | API Docs |
+| :--- | :--- | :--- | :--- |
+| **Yahoo Finance API (via yfinance library)** | Stocks, ETFs, currencies | Free, no API key required if using `yfinance` | [ReadTheDocs](https://python-yahoofinance.readthedocs.io/en/latest/api.html) |
+| **Alpha Vantage** | Real-time + historical stocks, crypto, forex | Free tier with rate limits (5 calls/min) | [Alpha Vantage Docs](https://www.alphavantage.co/documentation/) |
+| **FRED (Federal Reserve)** | Macroeconomic indicators (GDP, CPI, rates) | Fully free, requires simple key | [FRED API Docs](https://fred.stlouisfed.org/docs/api/fred/) |
+| **Equibles** | Stocks, sentiment analysis | Significant free data available. Has an MCP Server. | [Equibles Guide / MCP Docs](https://github.com/daniel3303/Equibles/blob/main/docs/guide/README.md) |
+| **Finnhub.io** | Stocks, sentiment analysis | Generous free tier | [Finnhub Docs](https://finnhub.io/docs/api) |
 
 ---
 
